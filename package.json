@@ -1,0 +1,22 @@
+{
+  "name": "praktikumanwendungssysteme",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaikeWein/PraktikumAnwendungssysteme.git"
+  },
+  "author": "Maike Weingaertner Silvia Yildiz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaikeWein/PraktikumAnwendungssysteme/issues"
+  },
+  "homepage": "https://github.com/MaikeWein/PraktikumAnwendungssysteme#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
