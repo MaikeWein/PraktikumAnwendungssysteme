@@ -3,8 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!-- bower:css -->
+
+      <link rel="stylesheet" type="text/css" href="/lib/angular-material/angular-material.css">
+
+     <!-- endinject -->
+    <!-- inject:css -->
+
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+
+    <!-- endinject -->
+    <!-- bower:js -->
+
+    <script src="/lib/jquery/dist/jquery.js"></script>
+
+    <script src="/lib/angular/angular.js"></script>
+
+    <script src="/lib/angular-animate/angular-animate.js"></script>
+
+    <script src="/lib/angular-aria/angular-aria.js"></script>
+
+    <script src="/lib/angular-messages/angular-messages.js"></script>
+
+    <script src="/lib/angular-route/angular-route.js"></script>
+
+    <script src="/lib/angular-material/angular-material.js"></script>
+
+    <!-- endinject -->
+    <!-- inject:js -->
+
+    <script src="/js/index.js"></script>
+
+    <!-- endinject -->
 </head>
-<body>
-juhu
+<body ng-app="app" ng-controller="appCtrl">
+
+<div id="nav-container">
+    <div>
+        <nav>
+            <ul>
+                <li ng-click="gotoAnchor('menu-home')">HOME</li>
+                <li ng-click="gotoAnchor('menu-service')">STÖBERN</li>
+                <li ng-click="gotoAnchor('menu-price')">PREIS</li>
+                <li ng-click="gotoAnchor('menu-footer')">KONTAKT</li>
+                <li ng-show="login==false">ANMELDEN</li>
+                <li ng-show="login==false">REGISTRIEREN</li>
+                <li ng-show="login==true">NEUE BESTELLUNG</li>
+                <li ng-show="login==true">MEINE BESTELLUNGEN</li>
+                <li ng-show="login==true">PROFILE</li>
+            </ul>
+        </nav>
+        <img src="assets/logo2.png" />
+
+    </div>
+</div>
+
+<div id="container" ng-view>
+
+</div>
+
+
+
+
+
+
 </body>
 </html>

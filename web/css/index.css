@@ -1,0 +1,71 @@
+#nav-container{
+    background-color: white;
+    height: 79px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 5;
+    width: 100%;
+}
+
+#nav-container nav{
+    float: right;
+    margin-top: 30px;
+}
+
+#nav-container > div > img{
+    width: 146px;
+    margin-top: 25px;
+}
+
+#nav-container ul{
+    list-style-type: none;
+
+}
+#nav-container ul > li{
+
+    display: inline-block;
+    margin-right: 11px;
+    cursor: pointer;
+    color: #E6007E;
+}
+
+#nav-container ul > li:last-of-type{
+
+    display: inline-block;
+    margin-right: 0px!important;
+
+}
+
+#nav-container > div:first-of-type{
+
+    max-width: 1160px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    height: 100%;
+    margin-top: -16px;
+}
+
+#menu-home{
+    background-color: #E6007E;
+    height: 100%;
+}
+#menu-service{
+    background-color: blueviolet;
+    height: 100%;
+}
+#menu-price{
+    background-color: yellow;
+    height: 100%;
+}
+#menu-footer{
+    background-color: coral;
+    height: 100%;
+}
+
+#container{
+    margin-top: 79px;
+    height: 100%;
+}

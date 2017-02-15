@@ -18,5 +18,20 @@
   "homepage": "https://github.com/MaikeWein/PraktikumAnwendungssysteme#readme",
   "dependencies": {
     "express": "^4.14.1"
+  },
+  "devDependencies": {
+    "apidoc": "^0.16.1",
+    "event-stream": "^3.3.2",
+    "gulp": "^3.9.1",
+    "gulp-angular-filesort": "^1.1.1",
+    "gulp-apidoc": "^0.2.4",
+    "gulp-concat": "^2.6.0",
+    "gulp-inject": "^4.1.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-sass": "^2.2.0",
+    "gulp-typescript": "^2.11.0",
+    "gulp-watch": "^4.3.10",
+    "main-bower-files": "^2.11.1",
+    "urlencode": "^1.1.0"
   }
 }
