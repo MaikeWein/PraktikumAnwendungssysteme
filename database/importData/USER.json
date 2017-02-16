@@ -1,0 +1,10 @@
+[{
+    "model": "USER",
+    "data": {
+      "salutation":false,
+      "firstName":"Maike",
+      "lastName":"Weingärtner",
+      "email":"meike.weingärtner@gmx.de"
+    }
+  }
+]
