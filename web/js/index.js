@@ -3,10 +3,94 @@
  */
 
 
-var app = angular.module('app',["ngRoute"]);
+var app = angular.module('app',["ngRoute","ngMaterial",'app.authservice','ngResource','ngAnimate','drop-ng']);
+
+app.directive('shakeThat', ['$animate', function($animate) {
+
+        return {
+            require: '^form',
+            scope: {
+                submit: '&',
+                submitted: '='
+            },
+            link: function(scope, element, attrs, form) {
+
+                // listen on submit event
+                element.on('submit', function() {
+
+                    // tell angular to update scope
+                    scope.$apply(function() {
+
+                        // everything ok -> call submit fn from controller
+                        if (form.$valid) return scope.submit();
+
+                        // show error messages on submit
+                        scope.submitted = true;
+
+                        // shake that form
+                        $animate.addClass(element, 'shake', function() {
+                            $animate.removeClass(element, 'shake');
+                        });
+
+                    });
+
+                });
+
+            }
+        };}]);
+
+app .directive('pwCheck', [function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, ctrl) {
+            var firstPassword = '#' + attrs.pwCheck;
+            elem.add(firstPassword).on('keyup', function () {
+                scope.$apply(function () {
+                    var v = elem.val()===$(firstPassword).val();
+                    ctrl.$setValidity('pwmatch', v);
+                });
+            });
+        }
+    }
+}]);
+
+app.config(function ($routeProvider,$mdThemingProvider) {
+
+    var primMap = $mdThemingProvider.extendPalette('pink', {
+        '500': '#E6007E',
+        'contrastDefaultColor': 'light'
+    });
+
+    // Register the new color palette map with the name <code>neonRed</code>
+    $mdThemingProvider.definePalette('primMaike', primMap);
 
 
-app.config(function ($routeProvider) {
+    var accentMap = $mdThemingProvider.extendPalette('green', {
+        '500': '#004d40',
+        'contrastDefaultColor': 'light'
+    });
+
+    // Register the new color palette map with the name <code>neonRed</code>
+    $mdThemingProvider.definePalette('accentMaike', accentMap);
+
+
+    var warningMap = $mdThemingProvider.extendPalette('green', {
+        '500': '#004d40',
+        'contrastDefaultColor': 'light'
+    });
+
+    // Register the new color palette map with the name <code>neonRed</code>
+    $mdThemingProvider.definePalette('warningMaike', warningMap);
+
+
+    // Use that theme for the primary intentions
+    $mdThemingProvider.theme('default')
+        .primaryPalette('primMaike')
+        .accentPalette('accentMaike')
+        .warnPalette('warningMaike');
+
+
+
 
     $routeProvider
         .when('/home', {
@@ -23,7 +107,16 @@ app.config(function ($routeProvider) {
             controller: 'appCtrl',
             templateUrl: 'template/neuebestellung/neuebestellung.html',
             pageTitle: 'Neue Bestellung'
+        })
+        .when('/meinprofil', {
+            controller: 'appCtrl',
+            templateUrl: 'template/meinprofil/meinprofil.html',
+            pageTitle: 'Neue Bestellung'
         });
+
+
+
+
     $routeProvider.otherwise('/home');
 
     ;
@@ -31,11 +124,182 @@ app.config(function ($routeProvider) {
 });
 
 
-app.controller('appCtrl', function($scope,$location,$anchorScroll){
+app.controller('appCtrl',appCtrl);
 
-    $scope.login=false;
+
+ function appCtrl($scope,$location,$anchorScroll,$mdDialog,$authapp,$timeout,$rootScope,$animate,$mdToast){
+
+
+     // Wächter wenn jemand versucht ohne Anmeldung an das Profile oder Meine Bestellung oder neue Bestellung zu holen
+     // Dabei wird bei der Event Überwacht bei dem Seitenwechsel.
+     // Bei jedem Seitem WEchsel wird überwacht ob ein Anmelde Token vorhanden ist und ob dieser Valide ist
+     // Ist ein Token nicht Valide und der Nutzer versucht auf die Geschützen Seiten zu kommen so wird dieser auf home umgeleitet
+     $scope.$on('$routeChangeStart', function(next, current) {
+
+         var token = localStorage.getItem('jwt');
+
+         if( token != null){
+
+             // Überprüfe den Token
+
+             $authapp.checkToken({token:token}).$promise.then(function (data) {
+
+                 // Prüfen ist der Token valide
+
+
+                 if(typeof data.err !== "undefined"){
+
+                     // Nicht Valide daher vorhandenen Token Löschen
+                     localStorage.removeItem('jwt');
+
+                     if(current.$$route.originalPath == "/meinprofil" || current.$$route.originalPath == "/neuebestellung" || current.$$route.originalPath == "/meinebestellungen"){
+                         $location.path('/home');
+                     }
+
+                 }else {
+
+                     // Valide daher auf Eingelogte Maske wechseln
+
+                     $rootScope.login = true;
+                     $rootScope.profile = data.profile;
+                 }
+             });
+         }else {
+
+             if(current.$$route.originalPath == "/meinprofil" || current.$$route.originalPath == "/neuebestellung" || current.$$route.originalPath == "/meinebestellungen"){
+                 $location.path('/home');
+             }
+         }
+
+
+
+
+     });
+
+
+    $rootScope.profile = {};
+    $rootScope.login=false;
+    $scope.loginObj = {};
+    $scope.regObj   = {};
+    $rootScope.loginError = false;
+     $rootScope.regError = false;
+
+     // Beim Betätigen der Anmeldung
+    $scope.startLogin = function () {
+
+        // Fehler auf false setzen
+        $rootScope.loginError = false;
+
+
+        // Senden des Anmelde Formulars an den Server
+
+        $authapp.login($scope.loginObj).$promise.then(function ( data) {
+
+            // Bei Fehler bitte Shaken über eine Animationsklasse und CSS3 Animation
+
+            if(typeof data.err !== "undefined"){
+
+                $('md-dialog').removeClass( "shake" );
+
+                $animate.addClass($('md-dialog'), 'shake', function() {
+                    $animate.removeClass($('md-dialog'), 'shake');
+                });
+
+                $rootScope.loginError = true;
+            }else{
+
+                // Ansonsten Anmelden dabei den Login auf true setzen um Ausgblendete Items anzuzeigen
+                // Dialog Schlissen
+                // Profile Informationen Zwischenspeichern
+                // Token zwischenspeichern in Scope sowie Localstorage (Webseiten Datebank)
+
+
+                $rootScope.login = true;
+                $mdDialog.hide();
+                $rootScope.profile = data.profile;
+                $rootScope.token = data.token;
+                localStorage.setItem('jwt',data.token);
+                $timeout(function () {
+
+                    $scope.$apply();
+                });
+            }
+        });
+
+    };
+
+    // Beim Regestrieren Gleiche wie bei Anmeldung...
+    $scope.startRegister = function () {
+        // Fehler auf false setzen
+        $rootScope.regError = false;
+         $authapp.register($scope.regObj).$promise.then(function ( data) {
+
+             if(typeof data.err !== "undefined"){
+
+                 $('md-dialog').removeClass( "shake" );
+
+                 $animate.addClass($('md-dialog'), 'shake', function() {
+                     $animate.removeClass($('md-dialog'), 'shake');
+                 });
+                 $rootScope.regError = true;
+
+
+
+             }else{
+
+                 $mdDialog.hide();
+                 $rootScope.login = true;
+                 $rootScope.profile = data.profile;
+                 $rootScope.token = data.token;
+                 localStorage.setItem('jwt',data.token);
+
+             }
+         });
+
+     };
+
+
+    // Öffnen des Login Popups durch Angular Material MDDialog
+    $scope.openLogin = function ($event) {
+
+        var parentEl = angular.element(document.body);
+
+        $rootScope.loginError = false;
+        $mdDialog.show({
+            parent: parentEl,
+            targetEvent: $event,
+            templateUrl: 'login.tmpl.html',
+            controller:appCtrl,
+            clickOutsideToClose:true
+        });
+
+
+    };
+     // Öffnen der Registrierung Popups durch Angular Material MDDialog
+    $scope.openRegister = function ($event) {
+        var parentEl = angular.element(document.body);
+
+        $rootScope.regError = false;
+        $mdDialog.show({
+            parent: parentEl,
+            targetEvent: $event,
+            templateUrl: 'register.tmpl.html',
+            controller:appCtrl,
+            clickOutsideToClose:true
+        });
+    }
 
     $scope.maike="ich bin die beste Entwicklerin der Welt";
+
+
+    // Öffnen der Webseite wie z.B. Mein Profile, Neue Bestellung und Meine Bestellungen
+
+    $scope.openSite = function (sitetitle) {
+
+        $location.path(sitetitle);
+    }
+
+    // Navigation von Home Stöbern usw. Innerhalb der Home Seite über Scroller
 
     $scope.gotoAnchor = function(x) {
 
@@ -54,4 +318,97 @@ app.controller('appCtrl', function($scope,$location,$anchorScroll){
         }
     };
 
-});
+    // Beim Laden der Seite bitte Ausführen
+
+     $scope.init = function () {
+
+         // Prüfen ob ein Token in der Localstorage ist (Client Datenbank)
+
+         var token = localStorage.getItem('jwt');
+
+         if( token != null){
+
+            // Überprüfe den Token
+
+             $authapp.checkToken({token:token}).$promise.then(function (data) {
+
+                 // Prüfen ist der Token valide
+
+
+                 if(typeof data.err !== "undefined"){
+
+                     // Nicht Valide daher vorhandenen Token Löschen
+                     localStorage.removeItem('jwt');
+
+                 }else {
+
+                     // Valide daher auf Eingelogte Maske wechseln
+
+                     $rootScope.login = true;
+                     $rootScope.profile = data.profile;
+                 }
+             });
+         }
+     }
+
+     // Abmelden von der Seite
+
+     $scope.logout = function () {
+
+         $rootScope.login = false;
+         $rootScope.profile = {};
+         localStorage.removeItem('jwt');
+         $scope.$broadcast("closeDrop");
+         $location.path('/home');
+     }
+
+     // Aktualisieren von der Seite mit Notification
+
+     $scope.updateProfile = function () {
+
+         $authapp.updateProfile( $rootScope.profile).$promise.then(function (data) {
+
+             if(typeof data.err !== "undefined"){
+
+
+             }else {
+
+                 // Senden von Notification
+                 $mdToast.show($mdToast.simple().textContent('Profile wurde aktuallisiert!') .position('top left'));
+             }
+         });
+
+     }
+
+     // Profil Löschen mit Abfrage....
+
+     $scope.deleteProfile = function (ev) {
+
+
+         var confirm = $mdDialog.confirm()
+             .title('Möchten Sie ihr Profil löschen ?')
+             .targetEvent(ev)
+             .ok('Ja Profil löschen')
+             .cancel('Nein löschen abbrechen');
+
+         $mdDialog.show(confirm).then(function() {
+             $authapp.deleteProfile( $rootScope.profile).$promise.then(function (data) {
+
+                 if(typeof data.err !== "undefined"){
+
+
+                 }else {
+                     $rootScope.login = false;
+                     $rootScope.profile = {};
+                     localStorage.removeItem('jwt');
+                     $location.path('/home');
+                 }
+             });
+         }, function() {
+         });
+
+
+     }
+
+
+};

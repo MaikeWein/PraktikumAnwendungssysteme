@@ -67,5 +67,106 @@
 
 #container{
     margin-top: 79px;
-    height: 100%;
+     height: 100%;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    12.5% {
+        transform: translateX(-6px) rotateY(-5deg);
+    }
+
+    37.5% {
+        transform: translateX(5px) rotateY(4deg);
+    }
+
+    62.5% {
+        transform: translateX(-3px) rotateY(-2deg);
+    }
+
+    87.5% {
+        transform: translateX(2px) rotateY(1deg);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: shake 400ms ease-in-out;
+}
+
+.msg-block-login{
+    color: #14ff47;
+}
+
+
+.profilenav{
+    border-color: #E6007E;
+    padding: 10px;
+    border-radius: 50%;
+    /* color: white; */
+    border: 1px solid #E6007E;
+}
+
+.profilenav:hover{
+    background-color: #E6007E;
+    color: white;
+}
+
+.drop-theme-arrows-bounce{
+    z-index: 50000000000000000000000!important;
+}
+
+
+
+.popovermenuebar ul{
+    list-style: none;
+    padding-left: 0px;
+
+}
+
+.popovermenuebar li{
+    background-color: #E6007E;
+    border-radius: 50%;
+    padding: 10px;
+    color: white;
+    display: inline-block;
+    height: 77px;
+    cursor: pointer;
+
+}
+
+.popovermenuebar li > div{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.popovermenuebar li md-icon{
+    color: white;
+    cursor: pointer;
+}
+
+.popovermenuebar li label{
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.popovermenuebar li:nth-of-type(2){
+    background-color: green;
+    margin-left: 10px;
+}
+
+.drop {
+   'position: fixed!important;
+}
+
+md-toast{
+    z-index: 500000000000000000000!important;
 }

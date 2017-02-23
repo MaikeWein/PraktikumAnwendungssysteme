@@ -6,14 +6,21 @@
 
     <!-- bower:css -->
 
-      <link rel="stylesheet" type="text/css" href="/lib/angular-material/angular-material.css">
+          <link rel="stylesheet" type="text/css" href="/lib/angular-material/angular-material.css">
 
-     <!-- endinject -->
+         <!-- endinject -->
+    <link rel="stylesheet" type="text/css" href="/lib/tether-drop/dist/css/drop-theme-basic.css">
+    <link rel="stylesheet" type="text/css" href="/lib/tether-drop/dist/css/drop-theme-hubspot-popovers.css">
+    <link rel="stylesheet" type="text/css" href="/lib/tether-drop/dist/css/drop-theme-arrows-bounce.css">
+    <link rel="stylesheet" type="text/css" href="/lib/tether-drop/dist/css/drop-theme-arrows-bounce-dark.css">
+
+
     <!-- inject:css -->
 
     <link rel="stylesheet" type="text/css" href="/css/index.css">
 
     <!-- endinject -->
+    <link href="/lib/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
     <!-- bower:js -->
 
     <script src="/lib/jquery/dist/jquery.js"></script>
@@ -28,16 +35,140 @@
 
     <script src="/lib/angular-route/angular-route.js"></script>
 
+    <script src="/lib/angular-resource/angular-resource.js"></script>
+
+    <script src="/lib/angular-mocks/angular-mocks.js"></script>
+
+    <script src="/lib/tether/dist/js/tether.js"></script>
+
     <script src="/lib/angular-material/angular-material.js"></script>
 
+    <script src="/lib/tether-drop/dist/js/drop.js"></script>
+
+    <script src="/lib/drop-ng/src/drop-ng.js"></script>
+
     <!-- endinject -->
+    <script src="/services/auth.service.js"></script>
     <!-- inject:js -->
 
     <script src="/js/index.js"></script>
 
     <!-- endinject -->
+
+
 </head>
-<body ng-app="app" ng-controller="appCtrl">
+<body ng-app="app" ng-controller="appCtrl" ng-init="init()">
+
+<script type="text/ng-template" id="register.tmpl.html">
+    <md-content style="min-width: 500px;height:636px;">
+        <form  name="register" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 flex md-truncate>Registrieren</h2>
+                    <md-button ng-disabled="register.$valid == false" ng-click="startRegister()" md-no-ink class=" ">
+                        Mein Konto erstellen
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content layout-padding="">
+                <md-input-container class="md-block md-icon-float">
+                    <label>Anrede</label>
+                    <md-icon  class="mdi mdi-baby-buggy mdi-24px"></md-icon>
+                    <md-select name="type" ng-model="regObj.salutation" required>
+                        <md-option value="true">Herr</md-option>
+                        <md-option value="false">Frau</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>Vorname</label>
+                    <md-icon  class="mdi mdi-account mdi-24px"></md-icon>
+                    <input ng-model="regObj.firstName" required>
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>Nachname</label>
+                    <md-icon  class="mdi mdi-account-multiple mdi-24px"></md-icon>
+                    <input ng-model="regObj.lastName" required>
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>Email</label>
+                    <md-icon  class="mdi mdi-email mdi-24px"></md-icon>
+                    <input type="email" ng-model="regObj.email" required>
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>Passwort</label>
+                    <md-icon  class="mdi mdi-key-variant mdi-24px"></md-icon>
+                    <input ng-minlength="6" id='pw1' name='pw1' type="password" ng-model="regObj.password" required>
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>Passwort Wiederholen</label>
+                    <md-icon  class="mdi mdi-key-variant mdi-24px"></md-icon>
+                    <input ng-minlength="6" id='pw2'  pw-check='pw1' name='pw2' type="password" ng-model="regObj.password2" required>
+                </md-input-container>
+                <div class='msg-block' ng-show='register.$error && register.pw2.$error.pwmatch'>
+                  <span class='msg-block-login' ng-show='register.pw2.$error.pwmatch'>
+                    Passwort stimmt nicht überein
+                  </span>
+                </div>
+                <div class='msg-block-login' ng-show='$root.regError == true'>
+                    Nutzer schon Vorhanden
+                </div>
+
+
+                <!--
+                <md-input-container class="md-block md-icon-float">
+                    <label>Strasse</label>
+                    <md-icon  class="mdi mdi-account-box mdi-24px"></md-icon>
+                    <input ng-model="regObj.street">
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>plz</label>
+                    <md-icon  class="mdi mdi-account-box mdi-24px"></md-icon>
+                    <input ng-model="regObj.plz">
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>Ort</label>
+                    <md-icon  class="mdi mdi-account-box mdi-24px"></md-icon>
+                    <input ng-model="regObj.location">
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>Telefonnummer</label>
+                    <md-icon  class="mdi mdi-account-box mdi-24px"></md-icon>
+                    <input ng-model="regObj.phone">
+                </md-input-container> -->
+            </md-content>
+        </form>
+    </md-content>
+</script>
+<script type="text/ng-template" id="login.tmpl.html">
+    <md-content style="width: 300px;height: 308px;" id="loginContainer">
+        <form name="loginform"  ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 flex md-truncate>Login</h2>
+                    <md-button ng-click="startLogin()" md-no-ink class=" ">
+                        Anmeldung
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content layout-padding="">
+                <md-input-container class="md-block md-icon-float">
+                    <label>Email</label>
+                    <md-icon  class="mdi mdi-account-box mdi-24px"></md-icon>
+                    <input ng-model="loginObj.email">
+                </md-input-container>
+                <md-input-container class="md-block md-icon-float">
+                    <label>Passwort</label>
+                    <md-icon  class="mdi mdi-key-variant mdi-24px"></md-icon>
+                    <input type="password" ng-model="loginObj.password">
+                </md-input-container>
+                <div class='msg-block-login' ng-show='$root.loginError == true'>
+                  Falsche Nutzerdaten
+                </div>
+            </md-content>
+        </form>
+    </md-content >
+</script>
+
 
 <div id="nav-container">
     <div>
@@ -47,11 +178,30 @@
                 <li ng-click="gotoAnchor('menu-service')">STÖBERN</li>
                 <li ng-click="gotoAnchor('menu-price')">PREIS</li>
                 <li ng-click="gotoAnchor('menu-footer')">KONTAKT</li>
-                <li ng-show="login==false">ANMELDEN</li>
-                <li ng-show="login==false">REGISTRIEREN</li>
-                <li ng-show="login==true">NEUE BESTELLUNG</li>
-                <li ng-show="login==true">MEINE BESTELLUNGEN</li>
-                <li ng-show="login==true">PROFILE</li>
+                <li ng-click="openLogin()" ng-show="$root.login==false">ANMELDEN</li>
+                <li ng-click="openRegister()" ng-show="$root.login==false">REGISTRIEREN</li>
+                <li ng-click="openSite('/neuebestellung')" ng-show="$root.login==true">NEUE BESTELLUNG</li>
+                <li ng-click="openSite('/meinebestellungen')"ng-show="$root.login==true">MEINE BESTELLUNGEN</li>
+                <li ng-show="$root.login==true"><span class="profilenav">{{$root.profile.firstName | limitTo:1}}{{$root.profile.lastName | limitTo:1}}</span>
+                    <drop   constrainToWindow="'true'"   constrainToScrollParent = "'true'"   position="'top center'">
+                        <div class="popovermenuebar">
+                          <ul>
+                              <li ng-click="openSite('/meinprofil')">
+                                  <div>
+                                  <md-icon  class="mdi mdi-face-profile mdi-24px"></md-icon>
+                                <label>Mein Profil</label>
+                                      </div>
+                              </li>
+                              <li ng-click="logout();">
+                                  <div>
+                                      <md-icon  class="mdi mdi-power mdi-24px"></md-icon>
+                                      <label>Abmelden</label>
+                                  </div>
+                              </li>
+                          </ul>
+                        </div>
+                    </drop>
+                </li>
             </ul>
         </nav>
         <img src="assets/logo2.png" />

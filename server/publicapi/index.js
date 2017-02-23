@@ -64,7 +64,12 @@ module.exports = function (router, database) {
                         database.USER.create(req.body)
                             .then(function (data) {
 
-                                res.send(data);
+
+                                var token = jwt.sign(data.dataValues, 'IchBinEinSignaturSchluessel', {expiresIn: "1h"});
+
+                                // Rückgabe des Tokens und des Profiles an den Client
+                                res.send({profile:data,token:token});
+
                             })
                             .error(function (err) {
                                 res.send(err);
@@ -126,6 +131,119 @@ module.exports = function (router, database) {
                  });
         }else{
             res.send({err:'no access'});
+        }
+    });
+    router.get('/checktoken',function (req,res) {
+
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    // Extrahiere den Benutzer aus dem Token
+
+                    // Hole den Aktuellen Nutzer aus der Datenbank und schicke zurück
+
+                    database.USER.findOne({where:{id:decoded.id}})
+                        .then(function (data) {
+                            res.send({profile:data});
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+    });
+
+
+    // Aktualisieren von Profil
+
+    router.put('/profile',function (req,res) {
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    var profile = req.body;
+
+                    // Extrahiere den Benutzer aus dem Token
+
+                    // Hole den Aktuellen Nutzer aus der Datenbank und schicke zurück
+
+                    database.USER.findOne({where:{id:profile.id}})
+                        .then(function (user) {
+
+                            user.update(
+                                profile
+                            )
+                                .then(function (data) {
+
+                                    res.send(data);
+                                })
+                                .error(function (err) {
+                                    res.send(err);
+                                });
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+    });
+    router.delete('/profile',function (req,res) {
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    var profile = req.query;
+
+                    // Extrahiere den Benutzer aus dem Token
+
+                    // Hole den Aktuellen Nutzer aus der Datenbank und schicke zurück
+
+                    database.USER.findOne({where:{id:profile.id}})
+                        .then(function (user) {
+
+                            user.destroy().then(function () {
+
+                                res.send({data:'delete'});
+                            });
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
         }
     });
 
