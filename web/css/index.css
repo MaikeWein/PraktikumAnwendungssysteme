@@ -170,3 +170,166 @@
 md-toast{
     z-index: 500000000000000000000!important;
 }
+
+.card-bestellung-zutat{
+    display: flex;
+    padding: 20px;
+
+}
+
+.card-bestellung-zutat > div{
+
+    margin-right: 30px;
+
+    background-color: white;
+    width:215px;
+    -webkit-box-shadow: 7px 6px 11px 1px rgba(189,189,189,1);
+    -moz-box-shadow: 7px 6px 11px 1px rgba(189,189,189,1);
+    box-shadow: 7px 6px 11px 1px rgba(189,189,189,1);
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.card-bestellung-zutat > div:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+
+.card-bestellung-zutat > div > div:first-of-type{
+    height: 170px;
+    position: relative;
+}
+.card-bestellung-zutat > div > div:nth-of-type(2){
+
+    background-color: rgb(230,0,126);
+    height: 88px;
+    color: white;
+    padding: 10px;
+}
+
+.card-bestellung-zutat > div > div > label{
+
+    display: block;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.card-bestellung-zutat > div > div > img{
+    width: 185px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.card-bestellung-zutat > div > div > p{
+    font-style: italic;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.card-bestellung-zutat-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
+
+.card-bestellung-zutat-overlay-over{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+}
+
+
+.card-bestellung-zutat-overlay-over > md-icon{
+    color: rgb(230,0,126);
+    margin: auto;
+    background-repeat: no-repeat no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    fill: currentColor;
+    height: 85px!important;
+    width: 85px!important;
+    min-height: 85px!important;
+    min-width: 85px!important;
+
+}
+
+.mdi-meikepx.mdi-set, .mdi-meikepx.mdi:before {
+    font-size: 85px;
+}
+.mdi-meikeherzpx.mdi-set, .mdi-meikeherzpx.mdi:before {
+    font-size: 13px;
+}
+
+.card-bestellung-zutat-zusammenfassung{
+    height: 335px;
+    background-color: grey;
+    color: white;
+    margin-bottom: 45px;
+}
+
+.card-bestellung-zutat-zusammenfassung slick{
+    width: 90%;
+    margin: 0 auto;
+    height: 245px;
+
+
+}
+
+.card-bestellung-zutat-zusammenfassung slick >div{
+    height: 100%;
+}
+.card-bestellung-zutat-zusammenfassung slick >div>div{
+    margin-top: 12px;
+    margin-left: 9px;
+}
+
+
+.card-bestellung-zutat-zusammenfassung slick  .slick-slide{
+    background-color: white;
+    margin-right: 30px;
+    color:  rgb(230,0,126);
+    -webkit-box-shadow: 10px 8px 31px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 8px 31px -4px rgba(0,0,0,0.75);
+    box-shadow: 10px 8px 31px -4px rgba(0,0,0,0.75);
+}
+
+.card-bestellung-zutat-zusammenfassung slick  img{
+    width: 185px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.card-bestellung-zutat-zusammenfassung slick  .slick-slide > div:first-of-type{
+     height: 170px;
+     position: relative;
+ }
+
+.card-bestellung-zutat-zusammenfassung slick  .slick-slide > div:nth-of-type(2){
+    background-color: rgb(230,0,126);
+    height: 23px;
+    color: white;
+    padding: 10px;
+}
+
+.card-bestellung-zutat-zusammenfassung-uebersicht h3{
+    margin-top: 23px;
+    display: inline-block;
+    margin-left: 27px;
+    width: 97%;
+}

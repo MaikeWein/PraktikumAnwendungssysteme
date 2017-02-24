@@ -247,4 +247,260 @@ module.exports = function (router, database) {
         }
     });
 
+    // Gebäck daten Holen
+
+    router.get('/gebaeck',function (req,res) {
+
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    // Logik zur Daten Holen
+
+                    database.GEBAECK.findAll()
+                        .then(function (gebaeck) {
+                            res.send(gebaeck);
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+
+
+    });
+
+    // Geschmack daten Holen
+
+    router.get('/geschmack',function (req,res) {
+
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    // Logik zur Daten Holen
+
+                    database.GESCHMACK.findAll()
+                        .then(function (GESCHMACK) {
+                            res.send(GESCHMACK);
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+
+
+    });
+
+
+    // Füllung daten Holen
+
+    router.get('/fuellung',function (req,res) {
+
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    // Logik zur Daten Holen
+
+                    database.FUELLUNG.findAll()
+                        .then(function (FUELLUNG) {
+                            res.send(FUELLUNG);
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+
+
+    });
+
+
+    // Toppings daten Holen
+
+    router.get('/toppings',function (req,res) {
+
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    // Logik zur Daten Holen
+
+                    database.TOPPINGS.findAll()
+                        .then(function (TOPPINGS) {
+                            res.send(TOPPINGS);
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+
+
+    });
+
+    router.post('/bestellung',function (req,res) {
+
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    // Logik zur Erstellen
+
+                    var daten = req.body;
+
+                    database.BESTELLUNG.create(daten)
+                        .then(function (databack) {
+
+                        var ArrToppings = [];
+
+
+                            for(var i = 0 ; i < daten.toppings.length; i++){
+
+                                ArrToppings.push(daten.toppings[i].id)
+                            }
+                            databack.addToppings(ArrToppings).then(function (err,data) {
+
+                                res.send({data:'finish'});
+                            });
+
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+
+
+    });
+
+
+    // Hole alle Bestellungen
+
+    router.get('/bestellung',function (req,res) {
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    // Logik zur Daten Holen
+
+                    database.BESTELLUNG.findAll({where:{userId:decoded.id},include:{all:true}})
+                        .then(function (BESTELLUNG) {
+                            res.send(BESTELLUNG);
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+    })
+
+
+    router.delete('/bestellung',function (req,res) {
+        // Prüfen ob Token vom Client gesendet wurde
+
+        if(typeof req.query.token !== "undefined"){
+
+            // Prüfen ist der Token Valide
+
+            var token = req.query.token;
+
+            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
+                if (err) {
+
+                    res.send({'err': 'token not valid'});
+
+                } else {
+
+                    var best = req.query;
+
+
+                    // Lösche die Bestellung nach ID und Benutzer
+                    database.BESTELLUNG.findOne({where:{$and:{id:best.id,userId:decoded.id}}})
+                        .then(function (BESTELLUNG) {
+
+                            BESTELLUNG.destroy().then(function () {
+
+                                database.BESTELLUNG.findAll({where:{userId:decoded.id},include:{all:true}})
+                                    .then(function (BESTELLUNG) {
+                                        res.send(BESTELLUNG);
+                                    });
+                            });
+                        });
+                }
+            });
+        }else{
+            res.send({err:'error'});
+        }
+    })
+
+
 }

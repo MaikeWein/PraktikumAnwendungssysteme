@@ -1,0 +1,19 @@
+[{
+    "model": "GEBAECK",
+    "data": {
+      "name":"Cupcake",
+      "description":"\"Wählen Sie unser Speziel Cupcake für Geniesser\"",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  },
+  {
+    "model": "GEBAECK",
+    "data": {
+      "name":"Muffin 2",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  }
+]

@@ -22,6 +22,9 @@
     "angular-route": "^1.6.2",
     "mdi": "^1.8.36",
     "angular-resource": "^1.6.2",
-    "drop-ng": "^0.1.5"
+    "drop-ng": "^0.1.5",
+    "angular-carousel": "^1.0.1",
+    "material-steppers": "^1.0.3",
+    "angular-slick": "^0.2.1"
   }
 }

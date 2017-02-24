@@ -1,0 +1,19 @@
+[{
+    "model": "FUELLUNG",
+    "data": {
+      "name":"Schokolade",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  },
+  {
+    "model": "FUELLUNG",
+    "data": {
+      "name":"Vanille",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  }
+]

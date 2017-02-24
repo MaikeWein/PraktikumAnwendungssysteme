@@ -33,6 +33,11 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
 
+                User.hasMany(models.BESTELLUNG,{as:'BESTELLUNGEN',
+                    foreignKey: {
+                        name: 'userId',
+                        allowNull: false
+                    }});
 
             }
         },

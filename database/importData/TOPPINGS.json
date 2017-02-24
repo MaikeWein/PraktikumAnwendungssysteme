@@ -1,0 +1,46 @@
+[{
+    "model": "TOPPINGS",
+    "data": {
+      "name":"Oreo",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  },
+  {
+    "model": "TOPPINGS",
+    "data": {
+      "name":"Streusel",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  },
+  {
+    "model": "TOPPINGS",
+    "data": {
+      "name":"Erdbersosse",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  },
+  {
+    "model": "TOPPINGS",
+    "data": {
+      "name":"Schokososse",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  },
+  {
+    "model": "TOPPINGS",
+    "data": {
+      "name":"Kronkant",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  }
+]

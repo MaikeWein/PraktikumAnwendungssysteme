@@ -1,0 +1,19 @@
+[{
+    "model": "GESCHMACK",
+    "data": {
+      "name":"Schokolade",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  },
+  {
+    "model": "GESCHMACK",
+    "data": {
+      "name":"Schokolade 2",
+      "description":"Toller Muffin",
+      "picurl":"/assets/gebaeck/muffin.jpg",
+      "preis":1
+    }
+  }
+]

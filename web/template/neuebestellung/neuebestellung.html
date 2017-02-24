@@ -1,10 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div ng-init="getZutaten()">
+    <md-stepper id="steppercupcake"
+                md-mobile-step-text="true"
+                md-vertical="false"
+                md-linear="true"
+                md-alternative="true">
+        <md-step md-label="Wähle ein Gebäck">
+            <md-step-body>
 
-</body>
-</html>
+                <div class="card-bestellung-zutat">
+                    <div ng-click="setGebaeck(geb.id,geb)" ng-repeat="geb in $root.gebaeck">
+                        <div>
+                            <img src="{{geb.picurl}}" />
+                            <div ng-show="checkGebaeck(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay">
+
+                            </div>
+                            <div ng-show="checkGebaeck(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay-over">
+                                <md-icon  class="mdi mdi-heart mdi-meikepx"></md-icon>
+                            </div>
+                        </div>
+                        <div>
+                            <label>{{geb.name}}
+                            
+                            <label style="float: right;">{{geb.preis}} €</label>
+                            </label>
+
+                            <p>{{geb.description}}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </md-step-body>
+            <md-step-actions>
+                <md-button ng-disabled="checkGebaeckFinish($root.bestellung)" class="md-primary md-raised" ng-click="weiter()">Weiter geht's</md-button>
+            </md-step-actions>
+        </md-step>
+        <md-step md-label="Wähle deinen Geschmack">
+            <md-step-body>
+                <div class="card-bestellung-zutat">
+                    <div ng-click="setGeschmack(geb.id,geb)" ng-repeat="geb in $root.geschmack">
+                        <div>
+                            <img src="{{geb.picurl}}" />
+                            <div ng-show="checkGeschmack(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay">
+
+                            </div>
+                            <div ng-show="checkGeschmack(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay-over">
+                                <md-icon  class="mdi mdi-heart mdi-meikepx"></md-icon>
+                            </div>
+                        </div>
+                        <div>
+                            <label>{{geb.name}}
+
+                                <label style="float: right;">{{geb.preis}} €</label>
+                            </label>
+
+                            <p>{{geb.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </md-step-body>
+            <md-step-actions>
+                <md-button ng-disabled="checkGeschmackFinish($root.bestellung)" class="md-primary md-raised" ng-click="weiter();">Weiter geht's</md-button>
+                <md-button class="md-primary" ng-click="zurueck();">zurück</md-button>
+            </md-step-actions>
+        </md-step>
+        <md-step md-label="Wähle deine Füllung">
+            <md-step-body>
+                <div class="card-bestellung-zutat">
+                    <div ng-click="setFuellung(geb.id,geb)" ng-repeat="geb in $root.fuellung">
+                        <div>
+                            <img src="{{geb.picurl}}" />
+                            <div ng-show="checkFuellung(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay">
+
+                            </div>
+                            <div ng-show="checkFuellung(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay-over">
+                                <md-icon  class="mdi mdi-heart mdi-meikepx"></md-icon>
+                            </div>
+                        </div>
+                        <div>
+                            <label>{{geb.name}}
+
+                                <label style="float: right;">{{geb.preis}} €</label>
+                            </label>
+
+                            <p>{{geb.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </md-step-body>
+            <md-step-actions>
+                <md-button ng-disabled="checkFuellungFinish($root.bestellung)" class="md-primary md-raised" ng-click="weiter();">Weiter geht's</md-button>
+                <md-button class="md-primary" ng-click="zurueck();">zurück</md-button>
+            </md-step-actions>
+        </md-step>
+        <md-step md-label="Wähle deine Toppings">
+            <md-step-body>
+                <div class="card-bestellung-zutat">
+                    <div ng-click="setToppings(geb.id,geb)" ng-repeat="geb in $root.toppings">
+                        <div>
+                            <img src="{{geb.picurl}}" />
+                            <div ng-show="checkToppings(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay">
+
+                            </div>
+                            <div ng-show="checkToppings(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay-over">
+                                <md-icon  class="mdi mdi-heart mdi-meikepx"></md-icon>
+                            </div>
+                        </div>
+                        <div>
+                            <label>{{geb.name}}
+                                <label style="float: right;">{{geb.preis}} €</label>
+                            </label>
+
+                            <p>{{geb.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </md-step-body>
+            <md-step-actions>
+                <md-button ng-disabled="checkToppingsFinish($root.bestellung)" class="md-primary md-raised" ng-click="weiter();">Weiter geht's</md-button>
+                <md-button class="md-primary" ng-click="zurueck();">zurück</md-button>
+            </md-step-actions>
+        </md-step>
+        <md-step md-label="Bestellung Abschliessen">
+            <md-step-body>
+                <md-content layout-padding="">
+                    <div class="card-bestellung-zutat-zusammenfassung">
+                        <h3>Deine Bestellung
+                        
+                        <span style="float: right; margin-right: 20px">
+                            Gesamt Preis: {{berrechnen($root.bestellung)}} €
+                        </span>
+                        </h3>
+                        <slick dots="true" infinite="false" speed=300 slides-to-show=5 touch-move="false" slides-to-scroll=1 class="slider one-time">
+                            <div>
+                                <div>
+                                    <img src="{{$root.bestellung.gebaeck.picurl}}" />
+                                </div>
+                                <div>
+                                    <label>Gebäck:</label>
+                                    <label>{{$root.bestellung.gebaeck.name}}
+                                        <label style="float: right;">{{$root.bestellung.gebaeck.preis}} €</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <img src="{{$root.bestellung.geschmack.picurl}}" />
+                                </div>
+                                <div>
+                                    <label>Geschmack:</label>
+                                    <label>{{$root.bestellung.geschmack.name}}
+                                        <label style="float: right;">{{$root.bestellung.geschmack.preis}} €</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <img src="{{$root.bestellung.fuellung.picurl}}" />
+                                </div>
+                                <div>
+                                    <label>Füllung:</label>
+                                    <label>{{$root.bestellung.fuellung.name}}
+                                        <label style="float: right;">{{$root.bestellung.fuellung.preis}} €</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div ng-repeat="top in $root.bestellung.toppings">
+                                <div>
+                                    <img src="{{top.toppings.picurl}}" />
+                                </div>
+                                <div>
+                                    <label>Topping {{$index + 1}}:</label>
+                                    <label>{{top.toppings.name}}
+                                        <label style="float: right;">{{top.toppings.preis}} €</label>
+                                    </label>
+                                </div>
+                            </div>
+                        </slick>
+                    </div>
+                    <md-input-container class="md-block md-icon-float">
+                        <label>Anrede</label>
+                        <md-icon  class="mdi mdi-baby-buggy mdi-24px"></md-icon>
+                        <md-select name="type" ng-model="$root.profile.salutation" required>
+                            <md-option value="true">Herr</md-option>
+                            <md-option value="false">Frau</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block md-icon-float">
+                        <label>Vorname</label>
+                        <md-icon  class="mdi mdi-account mdi-24px"></md-icon>
+                        <input ng-model="$root.profile.firstName" required>
+                    </md-input-container>
+                    <md-input-container class="md-block md-icon-float">
+                        <label>Nachname</label>
+                        <md-icon  class="mdi mdi-account-multiple mdi-24px"></md-icon>
+                        <input ng-model="$root.profile.lastName" required>
+                    </md-input-container>
+                    <md-input-container class="md-block md-icon-float">
+                        <label>Email</label>
+                        <md-icon  class="mdi mdi-email mdi-24px"></md-icon>
+                        <input type="email" ng-model="$root.profile.email" required>
+                    </md-input-container>
+                    <md-input-container class="md-block md-icon-float">
+                        <label>Strasse</label>
+                        <md-icon  class="mdi mdi-account-multiple mdi-24px"></md-icon>
+                        <input ng-model="$root.profile.street" required>
+                    </md-input-container>
+                    <md-input-container class="md-block md-icon-float">
+                        <label>PLZ</label>
+                        <md-icon  class="mdi mdi-account-multiple mdi-24px"></md-icon>
+                        <input ng-model="$root.profile.plz" required>
+                    </md-input-container>
+                    <md-input-container class="md-block md-icon-float">
+                        <label>Ort</label>
+                        <md-icon  class="mdi mdi-account-multiple mdi-24px"></md-icon>
+                        <input ng-model="$root.profile.location" required>
+                    </md-input-container>
+                    <md-input-container class="md-block md-icon-float">
+                        <label>Telefonnummer</label>
+                        <md-icon  class="mdi mdi-account-multiple mdi-24px"></md-icon>
+                        <input ng-model="$root.profile.phone" required>
+                    </md-input-container>
+                </md-content>
+
+
+
+
+
+
+            </md-step-body>
+            <md-step-actions>
+                <md-button class="md-primary md-raised" ng-click="sendBestellung();">Abschicken</md-button>
+                <md-button class="md-primary" ng-click="zurueck();">zurück</md-button>
+            </md-step-actions>
+        </md-step>
+        <!-- Other steps if needed ... -->
+    </md-stepper>
+
+
+</div>

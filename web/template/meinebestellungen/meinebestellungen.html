@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-asdasdsa
-</body>
-</html>
+<div ng-init="getMyBestellungen()">
+    <div class="card-bestellung-zutat-zusammenfassung card-bestellung-zutat-zusammenfassung-uebersicht"  ng-repeat="bestellung in $root.meinebestellungen">
+        <h3>Bestellung vom: {{bestellung.createdAt | date:'dd.MM.yyyy HH:mm'}}
+            <div style="float: right;">
+                <span>Bestellsumme Insgesamt: {{bestellung.gesamtPreis}} €</span>
+                <md-button   ng-click="deleteBestellung(bestellung)" class="md-raised md-primary">
+                    Bestellung Löschen
+                </md-button>
+            </div>
+
+        </h3>
+        <slick dots="true" infinite="false" speed=300 slides-to-show=5 touch-move="false" slides-to-scroll=1 class="slider one-time">
+            <div>
+                <div>
+                    <img src="{{bestellung.GEBAECK.picurl}}" />
+                </div>
+                <div>
+                    <label>Gebäck:</label>
+                    <label>{{bestellung.GEBAECK.name}}</label>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="{{bestellung.GESCHMACK.picurl}}" />
+                </div>
+                <div>
+                    <label>Geschmack:</label>
+                    <label>{{bestellung.GESCHMACK.name}}</label>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="{{bestellung.FUELLUNG.picurl}}" />
+                </div>
+                <div>
+                    <label>Füllung:</label>
+                    <label>{{bestellung.FUELLUNG.name}}</label>
+                </div>
+            </div>
+            <div ng-repeat="top in bestellung.Toppings">
+                <div>
+                    <img src="{{top.picurl}}" />
+                </div>
+                <div>
+                    <label>Topping {{$index + 1}}:</label>
+                    <label>{{top.name}}</label>
+                </div>
+            </div>
+        </slick>
+    </div>
+</div>

@@ -3,7 +3,7 @@
  */
 
 
-var app = angular.module('app',["ngRoute","ngMaterial",'app.authservice','ngResource','ngAnimate','drop-ng']);
+var app = angular.module('app',["ngRoute","ngMaterial",'app.authservice','ngResource','ngAnimate','drop-ng','mdSteppers','slick']);
 
 app.directive('shakeThat', ['$animate', function($animate) {
 
@@ -127,7 +127,7 @@ app.config(function ($routeProvider,$mdThemingProvider) {
 app.controller('appCtrl',appCtrl);
 
 
- function appCtrl($scope,$location,$anchorScroll,$mdDialog,$authapp,$timeout,$rootScope,$animate,$mdToast){
+ function appCtrl($scope,$location,$anchorScroll,$mdDialog,$authapp,$timeout,$rootScope,$animate,$mdToast,$mdStepper){
 
 
      // Wächter wenn jemand versucht ohne Anmeldung an das Profile oder Meine Bestellung oder neue Bestellung zu holen
@@ -175,14 +175,17 @@ app.controller('appCtrl',appCtrl);
 
 
      });
-
-
     $rootScope.profile = {};
     $rootScope.login=false;
     $scope.loginObj = {};
     $scope.regObj   = {};
     $rootScope.loginError = false;
      $rootScope.regError = false;
+
+     // BestellObj für die Datenbank
+
+     $rootScope.bestellung = {};
+
 
      // Beim Betätigen der Anmeldung
     $scope.startLogin = function () {
@@ -411,4 +414,266 @@ app.controller('appCtrl',appCtrl);
      }
 
 
+     // Hole alle Zutaten für Neue Bestellung
+
+     $scope.getZutaten = function () {
+
+         var arr = [];
+
+         arr.push($authapp.getGebaeck().$promise);
+         arr.push($authapp.getGeschmack().$promise);
+         arr.push($authapp.getFuellung().$promise);
+         arr.push($authapp.getToppings().$promise);
+
+         Promise.all(arr).then(function (values) {
+
+             $rootScope.gebaeck = values[0];
+             $rootScope.geschmack = values[1];
+             $rootScope.fuellung = values[2];
+             $rootScope.toppings = values[3];
+             $timeout(function () {
+
+                 $scope.$apply();
+             });
+
+
+         });
+
+
+     }
+
+
+
+     // Hilfsfunktion Gebaeck
+     $scope.setGebaeck = function (id,gebaeck) {
+
+         $rootScope.bestellung.gebaeckId = id;
+         $rootScope.bestellung.gebaeck = gebaeck;
+     }
+     $scope.checkGebaeck = function (id,bestellung) {
+
+         if( bestellung.gebaeckId == id){
+             return true;
+         }else{
+             return false;
+         }
+     }
+     $scope.checkGebaeckFinish = function (bestellung) {
+
+         if(typeof bestellung.gebaeckId == "undefined" ){
+             return true;
+         }else {
+             return false;
+         }
+     }
+
+     // Hilfsfunktion Geschmack
+     $scope.setGeschmack = function (id,geschmack) {
+
+         $rootScope.bestellung.geschmackId = id;
+         $rootScope.bestellung.geschmack = geschmack;
+     }
+     $scope.checkGeschmack = function (id,bestellung) {
+
+         if( bestellung.geschmackId == id){
+             return true;
+         }else{
+             return false;
+         }
+     }
+     $scope.checkGeschmackFinish = function (bestellung) {
+
+         if(typeof bestellung.geschmackId == "undefined" ){
+             return true;
+         }else {
+             return false;
+         }
+     }
+
+     // Hilfsfunktion Füllung
+     $scope.setFuellung = function (id,fuellung) {
+
+         $rootScope.bestellung.fuellungId = id;
+         $rootScope.bestellung.fuellung = fuellung;
+     }
+     $scope.checkFuellung = function (id,bestellung) {
+
+         if( bestellung.fuellungId == id){
+             return true;
+         }else{
+             return false;
+         }
+     }
+     $scope.checkFuellungFinish = function (bestellung) {
+
+         if(typeof bestellung.fuellungId == "undefined" ){
+             return true;
+         }else {
+             return false;
+         }
+     }
+
+     // Hilfsfunktion Toppings
+     $scope.setToppings = function (id,toppings) {
+
+         if(typeof $rootScope.bestellung.toppings == "undefined"){
+             $rootScope.bestellung.toppings = [];
+         }
+
+         var found = false;
+         var index = 0;
+
+         for(var i = 0 ;i < $rootScope.bestellung.toppings.length; i++ ){
+
+             if($rootScope.bestellung.toppings[i].id == id){
+                 found = true;
+                 index = i;
+             }
+         }
+
+
+         if(found == false){
+             $rootScope.bestellung.toppings.push({id:id,toppings:toppings});
+         }else {
+             $rootScope.bestellung.toppings.splice(index,1);
+         }
+
+
+     }
+     $scope.checkToppings = function (id,bestellung) {
+
+         if(typeof bestellung.toppings == "undefined"){
+             return false;
+         }
+
+         var found = false;
+
+         for(var i = 0 ;i < bestellung.toppings.length; i++ ){
+
+             if(bestellung.toppings[i].id == id){
+                 found = true;
+             }
+         }
+         return found;
+     }
+     $scope.checkToppingsFinish = function (bestellung) {
+
+         if(typeof bestellung.toppings == "undefined"){
+             return true;
+         }
+
+         if(bestellung.toppings.length >= 1){
+             return false;
+         }else {
+             return true;
+         }
+     }
+
+
+     $scope.weiter = function () {
+
+         $mdStepper('steppercupcake').next();
+     }
+     $scope.zurueck = function () {
+         $mdStepper('steppercupcake').back();
+     }
+
+
+     $scope.sendBestellung = function () {
+
+
+         var promarr = [];
+
+         promarr.push($authapp.updateProfile( $rootScope.profile).$promise);
+
+
+         $rootScope.bestellung.userId = $rootScope.profile.id;
+         $rootScope.bestellung.gesamtPreis =   $scope.berrechnen($rootScope.bestellung);
+
+
+
+         promarr.push($authapp.createBestellung( $rootScope.bestellung).$promise);
+
+         Promise.all(promarr).then(function (data) {
+
+             $location.path('/meinebestellungen');
+             $timeout(function () {
+
+                 $scope.$apply();
+             });
+         });
+
+
+     }
+
+
+     // Hole Meine Bestellungen
+
+     $scope.getMyBestellungen = function () {
+
+         var arr = [];
+
+         arr.push($authapp.getBestellungen().$promise);
+
+         Promise.all(arr).then(function (values) {
+
+             $rootScope.meinebestellungen = values[0];
+
+             $timeout(function () {
+
+                 $scope.$apply();
+             });
+
+
+         });
+
+     }
+
+     $scope.deleteBestellung = function (best) {
+
+         var confirm = $mdDialog.confirm()
+             .title('Möchten Sie die Bestellung löschen ?')
+             .ok('Ja Bestellung löschen')
+             .cancel('Nein löschen abbrechen');
+
+         $mdDialog.show(confirm).then(function() {
+             $authapp.deleteBestellungen( best).$promise.then(function (data) {
+
+                 if(typeof data.err !== "undefined"){
+
+
+                 }else {
+
+                     $rootScope.meinebestellungen = data;
+
+                     $timeout(function () {
+
+                         $scope.$apply();
+                     });
+                 }
+             });
+         }, function() {
+
+
+         });
+     }
+
+     // Calculat Gesamt Summe
+
+     $scope.berrechnen = function (bestellung) {
+
+         var sum = 0;
+
+         sum = sum  + bestellung.gebaeck.preis;
+         sum = sum  + bestellung.geschmack.preis;
+         sum = sum  + bestellung.fuellung.preis;
+
+         for(var i = 0; i < bestellung.toppings.length;i++){
+             sum = sum  +  bestellung.toppings[i].toppings.preis;
+         }
+
+
+         return sum;
+     }
+     
 };

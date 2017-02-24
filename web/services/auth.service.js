@@ -31,6 +31,55 @@ objc.provider('$authapp', function () {
                 url: '/publicapi/profile?token=' + localStorage.getItem('jwt'),
                 params: {}
             },
+            'getGebaeck': {
+                method: 'GET',
+                isArray:true,
+                url: '/publicapi/gebaeck?token=' + localStorage.getItem('jwt'),
+                params: {}
+            },
+            'getGeschmack': {
+                method: 'GET',
+                isArray:true,
+                url: '/publicapi/geschmack?token=' + localStorage.getItem('jwt'),
+                params: {}
+            },
+            'getFuellung': {
+                method: 'GET',
+                isArray:true,
+                url: '/publicapi/fuellung?token=' + localStorage.getItem('jwt'),
+                params: {}
+            },
+            'getToppings': {
+                method: 'GET',
+                isArray:true,
+                url: '/publicapi/toppings?token=' + localStorage.getItem('jwt'),
+                params: {}
+            },
+            'createBestellung': {
+                method: 'POST',
+                url: '/publicapi/bestellung?token=' + localStorage.getItem('jwt'),
+                params: {}
+            },
+            'getBestellungen': {
+                method: 'GET',
+                isArray:true,
+                url: '/publicapi/bestellung?token=' + localStorage.getItem('jwt'),
+                params: {}
+            },
+            'deleteBestellungen': {
+                method: 'DELETE',
+                isArray:true,
+                url: '/publicapi/bestellung?token=' + localStorage.getItem('jwt'),
+                params: {}
+            },
+
+
+
+
+
+
+
+
         });
     };
 });
