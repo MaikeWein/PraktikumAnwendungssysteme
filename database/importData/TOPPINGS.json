@@ -3,7 +3,7 @@
     "data": {
       "name":"Oreo",
       "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
+      "picurl":"/assets/toppings/oreokeks.jpg",
       "preis":1
     }
   },
@@ -11,17 +11,17 @@
     "model": "TOPPINGS",
     "data": {
       "name":"Streusel",
-      "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
+      "description":"Bunte Zuckerstreusel",
+      "picurl":"/assets/toppings/Streusel.png",
       "preis":1
     }
   },
   {
     "model": "TOPPINGS",
     "data": {
-      "name":"Erdbersosse",
-      "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
+      "name":"Puderzucker",
+      "description":"Klassisch mit Puderzucker",
+      "picurl":"/assets/toppings/puderzucker.jpg",
       "preis":1
     }
   },

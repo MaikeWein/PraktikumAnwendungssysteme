@@ -3,7 +3,7 @@
  */
 
 
-var app = angular.module('app',["ngRoute","ngMaterial",'app.authservice','ngResource','ngAnimate','drop-ng','mdSteppers','slick']);
+var app = angular.module('app',["ngRoute","ngMaterial",'app.authservice','ngResource','ngAnimate','drop-ng','mdSteppers','slick', ]);
 
 app.directive('shakeThat', ['$animate', function($animate) {
 

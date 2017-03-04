@@ -1,9 +1,9 @@
 [{
     "model": "FUELLUNG",
     "data": {
-      "name":"Schokolade",
-      "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
+      "name":"Nutella",
+      "description":"Mit cremiger Nutellafüllung",
+      "picurl":"/assets/fuellung/Nutella.png",
       "preis":1
     }
   },

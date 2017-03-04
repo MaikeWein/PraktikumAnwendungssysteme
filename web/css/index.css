@@ -1,3 +1,48 @@
+.kontakt-img {
+   width: 300px;
+}
+
+.kontakt{
+    background-color: white;
+    display: inline-block;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+
+}
+
+.cookie{
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 45px;
+
+    font-family: cookie-monster;
+}
+
+.homelay {
+font-family: cookie-monster;
+    color: #DE8BA5;
+    background-color:white ;
+    opacity: 0.9;
+    font-size: xx-large;
+    width: 650px;
+    position: absolute;
+    margin-left: 250px;
+    margin-top: 170px;
+    padding-left: 20px;
+    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+
+}
+
+@font-face { font-family: 'cookie-monster';
+    src: url('../fonts/CookieMonster.ttf') format('truetype'); }
+
 #nav-container{
     background-color: white;
     height: 79px;
@@ -27,7 +72,7 @@
     display: inline-block;
     margin-right: 11px;
     cursor: pointer;
-    color: #E6007E;
+    color: #DE8BA5;
 }
 
 #nav-container ul > li:last-of-type{
@@ -49,19 +94,21 @@
 }
 
 #menu-home{
-    background-color: #E6007E;
+    background-image: url("../assets/home2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
 }
 #menu-service{
-    background-color: blueviolet;
+    background-color: #FCBEBF;
     height: 100%;
 }
 #menu-price{
-    background-color: yellow;
+    background-color: #FAE4CF;
     height: 100%;
 }
 #menu-footer{
-    background-color: coral;
+    background-color: #C4C3D1;
     height: 100%;
 }
 
@@ -106,15 +153,15 @@
 
 
 .profilenav{
-    border-color: #E6007E;
+    border-color: #DE8BA5;
     padding: 10px;
     border-radius: 50%;
     /* color: white; */
-    border: 1px solid #E6007E;
+    border: 1px solid #DE8BA5;
 }
 
 .profilenav:hover{
-    background-color: #E6007E;
+    background-color: #DE8BA5;
     color: white;
 }
 
@@ -131,7 +178,7 @@
 }
 
 .popovermenuebar li{
-    background-color: #E6007E;
+    background-color: #DE8BA5;
     border-radius: 50%;
     padding: 10px;
     color: white;
@@ -206,7 +253,7 @@ md-toast{
 }
 .card-bestellung-zutat > div > div:nth-of-type(2){
 
-    background-color: rgb(230,0,126);
+    background-color: #DE8BA5;
     height: 88px;
     color: white;
     padding: 10px;
@@ -255,7 +302,7 @@ md-toast{
 
 
 .card-bestellung-zutat-overlay-over > md-icon{
-    color: rgb(230,0,126);
+    color: #DE8BA5;
     margin: auto;
     background-repeat: no-repeat no-repeat;
     display: inline-block;
@@ -277,7 +324,7 @@ md-toast{
 
 .card-bestellung-zutat-zusammenfassung{
     height: 335px;
-    background-color: grey;
+    background-color: #C4C3D1;
     color: white;
     margin-bottom: 45px;
 }
@@ -302,7 +349,7 @@ md-toast{
 .card-bestellung-zutat-zusammenfassung slick  .slick-slide{
     background-color: white;
     margin-right: 30px;
-    color:  rgb(230,0,126);
+    color:  #DE8BA5;
     -webkit-box-shadow: 10px 8px 31px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 8px 31px -4px rgba(0,0,0,0.75);
     box-shadow: 10px 8px 31px -4px rgba(0,0,0,0.75);
@@ -321,7 +368,7 @@ md-toast{
  }
 
 .card-bestellung-zutat-zusammenfassung slick  .slick-slide > div:nth-of-type(2){
-    background-color: rgb(230,0,126);
+    background-color: #DE8BA5;
     height: 23px;
     color: white;
     padding: 10px;
@@ -332,4 +379,11 @@ md-toast{
     display: inline-block;
     margin-left: 27px;
     width: 97%;
+}
+
+.slidehome {
+    width: 100%; !important;
+    margin: 0 auto; !important;
+    height: 245px; !important;
+
 }

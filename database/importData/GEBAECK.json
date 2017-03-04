@@ -10,10 +10,37 @@
   {
     "model": "GEBAECK",
     "data": {
-      "name":"Muffin 2",
-      "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
+      "name":"Berliner",
+      "description":"Toller Berliner",
+      "picurl":"/assets/gebaeck/berliner.png",
       "preis":1
+    }
+  },
+  {
+    "model": "GEBAECK",
+    "data": {
+      "name": "Croissant",
+      "description": "Tolles Croissant",
+      "picurl": "/assets/gebaeck/croissant.jpg",
+      "preis": 1
+    }
+  },
+  {
+    "model": "GEBAECK",
+    "data": {
+      "name":"Donut",
+      "description":"Toller Donut",
+      "picurl":"/assets/gebaeck/donut.png",
+      "preis":1
+    }
+  },
+  {
+    "model": "GEBAECK",
+    "data": {
+      "name": "Windbeutel",
+      "description": "Toller Windbeutel",
+      "picurl": "/assets/gebaeck/wind.png",
+      "preis": 1
     }
   }
 ]

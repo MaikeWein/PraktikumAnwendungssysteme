@@ -3,16 +3,44 @@
     "data": {
       "name":"Schokolade",
       "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
+      "picurl":"/assets/geschmack/Schokolade.png",
       "preis":1
     }
   },
   {
     "model": "GESCHMACK",
     "data": {
-      "name":"Schokolade 2",
+      "name":"Vanille",
       "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
+      "picurl":"/assets/geschmack/Vanille.png",
+      "preis":1
+    }
+  },
+
+  {
+    "model": "GESCHMACK",
+    "data": {
+      "name":"Zitrone",
+      "description":"Toller Muffin",
+      "picurl":"/assets/geschmack/Zitrone.png",
+      "preis":1
+    }
+  },
+  {
+    "model": "GESCHMACK",
+    "data": {
+      "name":"Stracciatella",
+      "description":"Toller Muffin",
+      "picurl":"/assets/geschmack/Stracciatella.png",
+      "preis":1
+    }
+  },
+  {
+    "model": "GESCHMACK",
+    "data": {
+      "name":"Ohne zusätzlichen Geschmack",
+      "description":"Toller Muffin",
+      "picurl":"/assets/geschmack/Teig.png",
       "preis":1
     }
   }
