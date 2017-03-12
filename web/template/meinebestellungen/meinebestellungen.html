@@ -2,7 +2,7 @@
     <div class="card-bestellung-zutat-zusammenfassung card-bestellung-zutat-zusammenfassung-uebersicht"  ng-repeat="bestellung in $root.meinebestellungen">
         <h3>Bestellung vom: {{bestellung.createdAt | date:'dd.MM.yyyy HH:mm'}}
             <div style="float: right;">
-                <span>Bestellsumme Insgesamt: {{bestellung.gesamtPreis}} €</span>
+                <span>Bestellsumme Insgesamt: {{bestellung.gesamtPreis | currency}}</span>
                 <md-button   ng-click="deleteBestellung(bestellung)" class="md-raised md-primary">
                     Bestellung Löschen
                 </md-button>

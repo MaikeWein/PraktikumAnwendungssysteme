@@ -181,6 +181,10 @@ app.controller('appCtrl',appCtrl);
     $scope.regObj   = {};
     $rootScope.loginError = false;
      $rootScope.regError = false;
+     $rootScope.gebaeck = [];
+     $rootScope.geschmack = [];
+     $rootScope.fuellung = [];
+     $rootScope.toppings = [];
 
      // BestellObj für die Datenbank
 
@@ -252,6 +256,8 @@ app.controller('appCtrl',appCtrl);
 
                  $mdDialog.hide();
                  $rootScope.login = true;
+
+
                  $rootScope.profile = data.profile;
                  $rootScope.token = data.token;
                  localStorage.setItem('jwt',data.token);
@@ -319,7 +325,10 @@ app.controller('appCtrl',appCtrl);
 
     // Beim Laden der Seite bitte Ausführen
 
+
      $scope.init = function () {
+
+
 
          // Prüfen ob ein Token in der Localstorage ist (Client Datenbank)
 
@@ -330,6 +339,8 @@ app.controller('appCtrl',appCtrl);
             // Überprüfe den Token
 
              $authapp.checkToken({token:token}).$promise.then(function (data) {
+
+                 $('body').css('visibility','visible');
 
                  // Prüfen ist der Token valide
 
@@ -345,6 +356,8 @@ app.controller('appCtrl',appCtrl);
 
                      $rootScope.login = true;
                      $rootScope.profile = data.profile;
+                     $rootScope.token  = localStorage.getItem('jwt');
+
                  }
              });
          }
@@ -364,6 +377,11 @@ app.controller('appCtrl',appCtrl);
      // Aktualisieren von der Seite mit Notification
 
      $scope.updateProfile = function () {
+
+         $rootScope.profile.token = $rootScope.token;
+
+         console.log(    $rootScope.profile);
+
 
          $authapp.updateProfile( $rootScope.profile).$promise.then(function (data) {
 
@@ -391,6 +409,10 @@ app.controller('appCtrl',appCtrl);
              .cancel('Nein löschen abbrechen');
 
          $mdDialog.show(confirm).then(function() {
+
+             $rootScope.profile.token = $rootScope.token;
+
+
              $authapp.deleteProfile( $rootScope.profile).$promise.then(function (data) {
 
                  if(typeof data.err !== "undefined"){
@@ -586,7 +608,7 @@ app.controller('appCtrl',appCtrl);
          $rootScope.bestellung.userId = $rootScope.profile.id;
          $rootScope.bestellung.gesamtPreis =   $scope.berrechnen($rootScope.bestellung);
 
-
+         $rootScope.bestellung.token = $rootScope.token;
 
          promarr.push($authapp.createBestellung( $rootScope.bestellung).$promise);
 
@@ -609,7 +631,7 @@ app.controller('appCtrl',appCtrl);
 
          var arr = [];
 
-         arr.push($authapp.getBestellungen().$promise);
+         arr.push($authapp.getBestellungen({token:$rootScope.token}).$promise);
 
          Promise.all(arr).then(function (values) {
 
@@ -633,6 +655,9 @@ app.controller('appCtrl',appCtrl);
              .cancel('Nein löschen abbrechen');
 
          $mdDialog.show(confirm).then(function() {
+
+             best.token= $rootScope.token;
+
              $authapp.deleteBestellungen( best).$promise.then(function (data) {
 
                  if(typeof data.err !== "undefined"){

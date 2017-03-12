@@ -1,8 +1,8 @@
 
 .wir {
-    width: 90%;
+    margin: 0 auto;
+    max-width: 1160px;
     margin-top: 15px;
-    margin-left: 15px;
     font-family: always-in-my-heart;
     color:#DE8BA5;
     font-size: 30px;
@@ -38,6 +38,12 @@
     background-color: #DE8BA5;
     color: white;
 }
+
+.hometext2  > div{
+    margin: 0 auto;
+    max-width: 1160px;
+}
+
 .picture {
     width: 500px;
     height: 100px;
@@ -122,11 +128,95 @@
 
 
 .price {
-    display:inline-flex;
-    margin-left: 50px;
+    display:block;
     margin-top: 40px;
-    background-color: white;
+    background-color: rgba(222, 139, 165, 0.22);
+    width: 350px;
+    padding: 10px;
 }
+
+.price > div:first-of-type{
+
+    height: 50px;
+    display: flex;
+}
+.price > div:first-of-type > div{
+    height: 100%;
+}
+.price > div:first-of-type > div:first-of-type{
+
+    width: 280px;
+    background-color: rgba(222, 139, 165, 0.72);
+}
+.price > div:first-of-type > div:nth-of-type(2){
+
+    width: 69px;
+    background-color: rgba(222, 139, 165, 0.72);
+}
+.price > div:first-of-type > div:first-of-type >label{
+    font-family: always-in-my-heart;
+    font-size: 32px;
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    color: white;
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -10px;
+}
+.price > div:first-of-type > div:nth-of-type(2) >label{
+    font-family: always-in-my-heart;
+    font-size: 32px;
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    color: white;
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -18px;
+
+}
+
+.price >div:nth-of-type(2) > div{
+    height: 50px;
+    display: flex;
+}
+
+.price >div:nth-of-type(2) >div > div:first-of-type{
+    width: 280px;
+}
+
+.price >div:nth-of-type(2) >div > div{
+    height: 50px;
+    display: flex;
+}
+.price >div:nth-of-type(2) > div > div:first-of-type>label{
+    font-family: always-in-my-heart;
+    font-size: 28px;
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    color: rgb(224, 109, 145);
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -10px;
+}
+
+
+.price > div:nth-of-type(2) >div > div:nth-of-type(2) >label{
+    font-family: always-in-my-heart;
+    font-size: 28px;
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    color: rgb(224, 109, 145);
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -18px;
+
+}
+
+
 table {
     border: 5px;
     padding:10px;
@@ -138,3 +228,78 @@ table {
 .Lieferung {
     display: inline-block;
 }
+.preisubcontainer {
+    margin: 0 auto;
+    max-width: 1160px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cookie  > div{
+    margin: 0 auto;
+    max-width: 1160px;
+}
+
+.uberunsvcontainer{
+    margin: 0 auto;
+    max-width: 1160px;
+}
+
+.uberunsvcontainer > div:first-of-type {
+
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.uberunsvcontainer > div:first-of-type >div {
+    background-color: rgba(222, 139, 165, 0.22);
+    width: 350px;
+    padding: 10px;
+    height: 288px;
+    margin-top: 30px;
+}
+.uberunsvcontainer > div:first-of-type >div > div:first-of-type{
+    background-color: rgba(222, 139, 165, 0.72);
+    padding: 1px;
+    margin-bottom: 10px;
+}
+.uberunsvcontainer > div:first-of-type >div > div:first-of-type > label{
+    font-family: always-in-my-heart;
+    font-size: 32px;
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    color: white;
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -10px;
+    padding-bottom: 7px;
+}
+
+.uberunsvcontainer > div:first-of-type >div > div > label{
+    font-family: always-in-my-heart;
+    font-size: 28px;
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    color: rgb(224, 109, 145);
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -10px;
+    padding-bottom: 0px;
+}
+.uberunsvcontainer > div:first-of-type >div > div > a{
+    font-family: always-in-my-heart;
+    font-size: 28px;
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    color: rgb(224, 109, 145);
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -10px;
+    text-decoration: none;
+    padding-bottom: 0px;
+}
+

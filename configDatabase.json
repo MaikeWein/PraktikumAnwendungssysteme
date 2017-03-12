@@ -1,0 +1,7 @@
+{
+  "databaseUrl":"code-garage-solutions.de",
+  "port":5432,
+  "databaseName":"projectarbeituni",
+  "userName":"app",
+  "password":"ikrdeveloper68309"
+}

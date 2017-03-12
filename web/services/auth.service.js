@@ -23,53 +23,53 @@ objc.provider('$authapp', function () {
             },
             'updateProfile': {
                 method: 'PUT',
-                url: '/publicapi/profile?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/profile',
                 params: {}
             },
             'deleteProfile': {
                 method: 'DELETE',
-                url: '/publicapi/profile?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/profile',
                 params: {}
             },
             'getGebaeck': {
                 method: 'GET',
                 isArray:true,
-                url: '/publicapi/gebaeck?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/gebaeck',
                 params: {}
             },
             'getGeschmack': {
                 method: 'GET',
                 isArray:true,
-                url: '/publicapi/geschmack?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/geschmack',
                 params: {}
             },
             'getFuellung': {
                 method: 'GET',
                 isArray:true,
-                url: '/publicapi/fuellung?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/fuellung',
                 params: {}
             },
             'getToppings': {
                 method: 'GET',
                 isArray:true,
-                url: '/publicapi/toppings?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/toppings',
                 params: {}
             },
             'createBestellung': {
                 method: 'POST',
-                url: '/publicapi/bestellung?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/bestellung',
                 params: {}
             },
             'getBestellungen': {
                 method: 'GET',
                 isArray:true,
-                url: '/publicapi/bestellung?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/bestellung',
                 params: {}
             },
             'deleteBestellungen': {
                 method: 'DELETE',
                 isArray:true,
-                url: '/publicapi/bestellung?token=' + localStorage.getItem('jwt'),
+                url: '/publicapi/bestellung',
                 params: {}
             },
 

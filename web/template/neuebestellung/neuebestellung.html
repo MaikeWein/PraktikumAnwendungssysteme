@@ -21,7 +21,7 @@
                         <div>
                             <label>{{geb.name}}
                             
-                            <label style="float: right;">{{geb.preis}} €</label>
+                            <label style="float: right;">{{geb.preis | currency}}</label>
                             </label>
 
                             <p>{{geb.description}}</p>
@@ -80,7 +80,7 @@
                         <div>
                             <label>{{geb.name}}
 
-                                <label style="float: right;">{{geb.preis}} €</label>
+                                <label style="float: right;">{{geb.preis | currency}}</label>
                             </label>
 
                             <p>{{geb.description}}</p>
@@ -108,7 +108,7 @@
                         </div>
                         <div>
                             <label>{{geb.name}}
-                                <label style="float: right;">{{geb.preis}} €</label>
+                                <label style="float: right;">{{geb.preis | currency}}</label>
                             </label>
 
                             <p>{{geb.description}}</p>
@@ -128,7 +128,7 @@
                         <h3>Deine Bestellung
                         
                         <span style="float: right; margin-right: 20px">
-                            Gesamt Preis: {{berrechnen($root.bestellung)}} €
+                            Gesamt Preis: {{berrechnen($root.bestellung) | currency}}
                         </span>
                         </h3>
                         <slick dots="true" infinite="false" speed=300 slides-to-show=5 touch-move="false" slides-to-scroll=1 class="slider one-time">
@@ -139,7 +139,7 @@
                                 <div>
                                     <label>Gebäck:</label>
                                     <label>{{$root.bestellung.gebaeck.name}}
-                                        <label style="float: right;">{{$root.bestellung.gebaeck.preis}} €</label>
+                                        <label style="float: right;">{{$root.bestellung.gebaeck.preis | currency}}</label>
                                     </label>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                                 <div>
                                     <label>Geschmack:</label>
                                     <label>{{$root.bestellung.geschmack.name}}
-                                        <label style="float: right;">{{$root.bestellung.geschmack.preis}} €</label>
+                                        <label style="float: right;">{{$root.bestellung.geschmack.preis | currency}}</label>
                                     </label>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                                 <div>
                                     <label>Füllung:</label>
                                     <label>{{$root.bestellung.fuellung.name}}
-                                        <label style="float: right;">{{$root.bestellung.fuellung.preis}} €</label>
+                                        <label style="float: right;">{{$root.bestellung.fuellung.preis | currency}}</label>
                                     </label>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                 <div>
                                     <label>Topping {{$index + 1}}:</label>
                                     <label>{{top.toppings.name}}
-                                        <label style="float: right;">{{top.toppings.preis}} €</label>
+                                        <label style="float: right;">{{top.toppings.preis | currency}}</label>
                                     </label>
                                 </div>
                             </div>

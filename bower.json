@@ -25,6 +25,7 @@
     "drop-ng": "^0.1.5",
     "angular-carousel": "^1.0.1",
     "material-steppers": "^1.0.3",
-    "angular-slick": "^0.2.1"
+    "angular-slick": "^0.2.1",
+    "angular-i18n": "^1.6.3"
   }
 }

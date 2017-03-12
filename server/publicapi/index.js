@@ -168,11 +168,11 @@ module.exports = function (router, database) {
     router.put('/profile',function (req,res) {
         // Prüfen ob Token vom Client gesendet wurde
 
-        if(typeof req.query.token !== "undefined"){
+        if(typeof req.body.token !== "undefined"){
 
             // Prüfen ist der Token Valide
 
-            var token = req.query.token;
+            var token = req.body.token;
 
             jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
                 if (err) {
@@ -248,32 +248,10 @@ module.exports = function (router, database) {
 
     router.get('/gebaeck',function (req,res) {
 
-        // Prüfen ob Token vom Client gesendet wurde
-
-        if(typeof req.query.token !== "undefined"){
-
-            // Prüfen ist der Token Valide
-
-            var token = req.query.token;
-
-            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
-                if (err) {
-
-                    res.send({'err': 'token not valid'});
-
-                } else {
-
-                    // Logik zur Daten Holen
-
-                    database.GEBAECK.findAll()
-                        .then(function (gebaeck) {
-                            res.send(gebaeck);
-                        });
-                }
+        database.GEBAECK.findAll()
+            .then(function (gebaeck) {
+                res.send(gebaeck);
             });
-        }else{
-            res.send({err:'error'});
-        }
 
 
     });
@@ -282,32 +260,10 @@ module.exports = function (router, database) {
 
     router.get('/geschmack',function (req,res) {
 
-        // Prüfen ob Token vom Client gesendet wurde
-
-        if(typeof req.query.token !== "undefined"){
-
-            // Prüfen ist der Token Valide
-
-            var token = req.query.token;
-
-            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
-                if (err) {
-
-                    res.send({'err': 'token not valid'});
-
-                } else {
-
-                    // Logik zur Daten Holen
-
-                    database.GESCHMACK.findAll()
-                        .then(function (GESCHMACK) {
-                            res.send(GESCHMACK);
-                        });
-                }
+        database.GESCHMACK.findAll()
+            .then(function (GESCHMACK) {
+                res.send(GESCHMACK);
             });
-        }else{
-            res.send({err:'error'});
-        }
 
 
     });
@@ -319,30 +275,11 @@ module.exports = function (router, database) {
 
         // Prüfen ob Token vom Client gesendet wurde
 
-        if(typeof req.query.token !== "undefined"){
 
-            // Prüfen ist der Token Valide
-
-            var token = req.query.token;
-
-            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
-                if (err) {
-
-                    res.send({'err': 'token not valid'});
-
-                } else {
-
-                    // Logik zur Daten Holen
-
-                    database.FUELLUNG.findAll()
-                        .then(function (FUELLUNG) {
-                            res.send(FUELLUNG);
-                        });
-                }
+        database.FUELLUNG.findAll()
+            .then(function (FUELLUNG) {
+                res.send(FUELLUNG);
             });
-        }else{
-            res.send({err:'error'});
-        }
 
 
     });
@@ -352,33 +289,10 @@ module.exports = function (router, database) {
 
     router.get('/toppings',function (req,res) {
 
-        // Prüfen ob Token vom Client gesendet wurde
-
-        if(typeof req.query.token !== "undefined"){
-
-            // Prüfen ist der Token Valide
-
-            var token = req.query.token;
-
-            jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
-                if (err) {
-
-                    res.send({'err': 'token not valid'});
-
-                } else {
-
-                    // Logik zur Daten Holen
-
-                    database.TOPPINGS.findAll()
-                        .then(function (TOPPINGS) {
-                            res.send(TOPPINGS);
-                        });
-                }
+        database.TOPPINGS.findAll()
+            .then(function (TOPPINGS) {
+                res.send(TOPPINGS);
             });
-        }else{
-            res.send({err:'error'});
-        }
-
 
     });
 
@@ -386,11 +300,11 @@ module.exports = function (router, database) {
 
         // Prüfen ob Token vom Client gesendet wurde
 
-        if(typeof req.query.token !== "undefined"){
+        if(typeof req.body.token !== "undefined"){
 
             // Prüfen ist der Token Valide
 
-            var token = req.query.token;
+            var token = req.body.token;
 
             jwt.verify(token, 'IchBinEinSignaturSchluessel', function(err, decoded) {
                 if (err) {
@@ -448,6 +362,9 @@ module.exports = function (router, database) {
                 } else {
 
                     // Logik zur Daten Holen
+
+                    console.log(decoded);
+
 
                     database.BESTELLUNG.findAll({where:{userId:decoded.id},include:{all:true}})
                         .then(function (BESTELLUNG) {

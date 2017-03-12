@@ -19,7 +19,15 @@ var sequelize = new Sequelize('projectarbeituni', 'app', 'ikrdeveloper68309', {
     }
 });*/
 
-var sequelize = new Sequelize('postgres://app:ikrdeveloper68309@code-garage-solutions.de:5432/projectarbeituni');
+var dbConfig = require('../configDatabase.json');
+
+var dbString = "postgres://";
+    dbString = dbString + dbConfig.userName + ":";
+    dbString = dbString + dbConfig.password + "@";
+    dbString = dbString + dbConfig.databaseUrl + ":";
+    dbString = dbString + dbConfig.port + "/";
+    dbString = dbString + dbConfig.databaseName;
+var sequelize = new Sequelize(dbString);
 
 var db = {};
 
