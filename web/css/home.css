@@ -303,3 +303,34 @@ table {
     padding-bottom: 0px;
 }
 
+
+.uberunsvcontainerimpressum  > div:first-of-type >div {
+    width: 545px!important;
+    height: 970px!important;
+}
+
+.uberunsvcontainerimpressum h2{
+    font-family: Roboto, "Helvetica Neue", sans-serif!Important;
+    font-size: 17px;
+    padding: 15px;
+    text-align: left;
+    font-style: normal!important;
+    color: rgb(224, 109, 145);
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -10px;
+    padding-bottom: 0px;
+}
+
+.uberunsvcontainerimpressum > div:first-of-type >div > div > label {
+    font-family: Roboto, "Helvetica Neue", sans-serif!Important;
+    font-size: 17px;
+    padding: 15px;
+    text-align: left;
+    font-style: normal!important;
+    color: rgb(224, 109, 145);
+    margin-top: -7px;
+    display: inline-block;
+    margin-left: -10px;
+    padding-bottom: 0px;
+}

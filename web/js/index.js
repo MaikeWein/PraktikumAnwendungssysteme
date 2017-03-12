@@ -155,18 +155,21 @@ app.controller('appCtrl',appCtrl);
                      if(current.$$route.originalPath == "/meinprofil" || current.$$route.originalPath == "/neuebestellung" || current.$$route.originalPath == "/meinebestellungen"){
                          $location.path('/home');
                      }
-
+                     $('body').css('visibility','visible');
                  }else {
 
                      // Valide daher auf Eingelogte Maske wechseln
 
                      $rootScope.login = true;
                      $rootScope.profile = data.profile;
+                     $('body').css('visibility','visible');
                  }
              });
          }else {
 
-             if(current.$$route.originalPath == "/meinprofil" || current.$$route.originalPath == "/neuebestellung" || current.$$route.originalPath == "/meinebestellungen"){
+             $('body').css('visibility','visible');
+
+           if( current.$$route.originalPath == "/meinprofil" || current.$$route.originalPath == "/neuebestellung" || current.$$route.originalPath == "/meinebestellungen"){
                  $location.path('/home');
              }
          }
