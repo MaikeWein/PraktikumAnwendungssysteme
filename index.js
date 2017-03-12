@@ -1,7 +1,3 @@
-/**
- * Created by kaceria on 15.02.2017.
- */
-
 // Express ist ein Modul was uns dabei Unterstützt ein Webserver aufzusetzten
 var express = require('express');
 // Path ist ein Modul das uns Hilf auf das Dateisystem zuzugreifen in Form von Auflösen der Absouluten Adresse bzw. c:/proje....

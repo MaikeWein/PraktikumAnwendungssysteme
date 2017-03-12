@@ -1,8 +1,3 @@
-/**
- * Created by kaceria on 15.02.2017.
- */
-
-
 var app = angular.module('app',["ngRoute","ngMaterial",'app.authservice','ngResource','ngAnimate','drop-ng','mdSteppers','slick' ]);
 
 app.directive('shakeThat', ['$animate', function($animate) {
