@@ -1,6 +1,3 @@
-/**
- * Created by kaceria on 16.02.2017.
- */
 var jwt = require('jsonwebtoken');
 
 module.exports = function (router, database) {

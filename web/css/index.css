@@ -15,33 +15,15 @@
 
 }
 
-.cookie{
-    padding-left: 5px;
-    padding-top: 5px;
-    font-size: 45px;
 
-    font-family: cookie-monster;
-}
 
-.homelay {
-font-family: cookie-monster;
-    color: #DE8BA5;
-    background-color:white ;
-    opacity: 0.9;
-    font-size: xx-large;
-    width: 650px;
-    position: absolute;
-    margin-left: 250px;
-    margin-top: 170px;
-    padding-left: 20px;
-    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
 
-}
 
 @font-face { font-family: 'cookie-monster';
     src: url('../fonts/CookieMonster.ttf') format('truetype'); }
+
+@font-face { font-family: 'always-in-my-heart';
+    src: url('../fonts/Always In My Heart.ttf') format('truetype'); }
 
 #nav-container{
     background-color: white;
@@ -94,27 +76,21 @@ font-family: cookie-monster;
 }
 
 #menu-home{
-    background-image: url("../assets/home2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
+    height: 90%;
 }
-#menu-service{
-    background-color: #FCBEBF;
-    height: 100%;
-}
+
 #menu-price{
-    background-color: #FAE4CF;
-    height: 100%;
+    background-color: #FFEAF2;
+    height: 130%;
 }
 #menu-footer{
-    background-color: #C4C3D1;
-    height: 100%;
+    background-color: #FFEAF2;
+    height: 180%;
 }
 
 #container{
     margin-top: 79px;
-     height: 100%;
+     height: 130%;
 }
 
 @keyframes shake {
@@ -221,12 +197,15 @@ md-toast{
 .card-bestellung-zutat{
     display: flex;
     padding: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 
 }
 
 .card-bestellung-zutat > div{
 
     margin-right: 30px;
+    margin-top: 20px;
 
     background-color: white;
     width:215px;

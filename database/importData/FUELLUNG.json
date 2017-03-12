@@ -2,18 +2,45 @@
     "model": "FUELLUNG",
     "data": {
       "name":"Nutella",
-      "description":"Mit cremiger Nutellafüllung",
+      "description":"\"Mit cremiger Nutellafüllung\"",
       "picurl":"/assets/fuellung/Nutella.png",
-      "preis":1
+      "preis":0.4
     }
   },
   {
     "model": "FUELLUNG",
     "data": {
-      "name":"Vanille",
-      "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
-      "preis":1
+      "name":"Vanillepudding",
+      "description":"\"Wie bei Oma\"",
+      "picurl":"/assets/fuellung/vanille-pudding.jpg",
+      "preis":0.2
+    }
+  },
+  {
+    "model": "FUELLUNG",
+    "data": {
+      "name":"Erdbeeren",
+      "description":"\"Liebevoll selbstgemachte Konfitüre\"",
+      "picurl":"/assets/fuellung/Erdbeermarmelade.jpg",
+      "preis":0.2
+    }
+  },
+  {
+    "model": "FUELLUNG",
+    "data": {
+      "name":"Blaubeeren",
+      "description":"\"Gefüllt mit saftigen Blaubeeren\"",
+      "picurl":"/assets/fuellung/Blaubeeren.jpg",
+      "preis":0.2
+    }
+  },
+  {
+    "model": "FUELLUNG",
+    "data": {
+      "name":"Marzipan",
+      "description":"\"Lübecker Marzipan \"",
+      "picurl":"/assets/fuellung/Marzipan.png",
+      "preis":0.4
     }
   }
 ]

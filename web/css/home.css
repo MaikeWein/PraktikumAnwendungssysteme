@@ -1,0 +1,140 @@
+
+.wir {
+    width: 90%;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-family: always-in-my-heart;
+    color:#DE8BA5;
+    font-size: 30px;
+}
+
+.cookie2 {
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 45px;
+
+    font-family: always-in-my-heart;
+
+}
+.cookie{
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 45px;
+
+    font-family: always-in-my-heart;
+}
+.hometext {
+    font-family: always-in-my-heart;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 65px;
+    background-color: #DE8BA5;
+    color: white;
+}
+.hometext2 {
+    font-family: always-in-my-heart;
+    font-size: 50px;
+    text-align: left;
+    background-color: #DE8BA5;
+    color: white;
+}
+.picture {
+    width: 500px;
+    height: 100px;
+    margin-top: 10px;
+}
+.picturecup {
+    width: 120px;
+    height: 100px;
+}
+
+.homelay {
+    font-family: cookie-monster;
+    color: #DE8BA5;
+    background-color:white ;
+    opacity: 0.9;
+    font-size: xx-large;
+    width: 650px;
+    position: absolute;
+    margin-left: 250px;
+    margin-top: 170px;
+    padding-left: 20px;
+    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+
+}
+.parallax {
+    /* The image used */
+    background-image: url("../assets/banner.jpg");
+
+    /* Set a specific height */
+    height: 350px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallaxkontakt {
+    /* The image used */
+    background-image: url("../assets/image.jpg");
+
+    /* Set a specific height */
+    height: 220px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.kko{
+    text-align: left;
+    font-family: always-in-my-heart;
+    font-size: 23px;
+}
+
+
+.fuckshit td{
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    background: #eee;
+    border: 1px solid #DDD;
+    background: linear-gradient(to bottom, #DE8BA5 -15%, #FFFAFE 100%);
+    box-shadow: 1px 2px 4px rgba(0,0,0, .2);
+}
+.fuckshit th{
+
+    font-family: always-in-my-heart;
+    font-size: 32px;
+    padding: 15px;
+    text-align: left;
+    font-style: italic;
+    background: #eee;
+    border: 1px solid #DDD;
+    background: linear-gradient(to bottom, #DE8BA5 -15%, #FFFAFE 100%);
+    box-shadow: 1px 2px 4px rgba(0,0,0, .2);
+}
+
+
+.price {
+    display:inline-flex;
+    margin-left: 50px;
+    margin-top: 40px;
+    background-color: white;
+}
+table {
+    border: 5px;
+    padding:10px;
+}
+
+.map{
+    display: inline-block;
+}
+.Lieferung {
+    display: inline-block;
+}

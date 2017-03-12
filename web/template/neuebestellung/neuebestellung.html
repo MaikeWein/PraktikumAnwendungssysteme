@@ -35,7 +35,7 @@
                 <md-button ng-disabled="checkGebaeckFinish($root.bestellung)" class="md-primary md-raised" ng-click="weiter()">Weiter geht's</md-button>
             </md-step-actions>
         </md-step>
-        <md-step md-label="Wähle deinen Geschmack">
+        <md-step md-label="Wähle deinen Teiggeschmack">
             <md-step-body>
                 <div class="card-bestellung-zutat">
                     <div ng-click="setGeschmack(geb.id,geb)" ng-repeat="geb in $root.geschmack">
@@ -51,7 +51,7 @@
                         <div>
                             <label>{{geb.name}}
 
-                                <label style="float: right;">{{geb.preis}} €</label>
+                                <label style="float: right;">{{geb.preis}}</label>
                             </label>
 
                             <p>{{geb.description}}</p>
@@ -69,7 +69,7 @@
                 <div class="card-bestellung-zutat">
                     <div ng-click="setFuellung(geb.id,geb)" ng-repeat="geb in $root.fuellung">
                         <div>
-                            <img src="{{geb.picurl}}" />
+                            <img  ng-src="{{geb.picurl}}" />
                             <div ng-show="checkFuellung(geb.id,$root.bestellung)" class="card-bestellung-zutat-overlay">
 
                             </div>

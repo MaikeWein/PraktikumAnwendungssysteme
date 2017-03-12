@@ -3,7 +3,7 @@
  */
 
 
-var app = angular.module('app',["ngRoute","ngMaterial",'app.authservice','ngResource','ngAnimate','drop-ng','mdSteppers','slick', ]);
+var app = angular.module('app',["ngRoute","ngMaterial",'app.authservice','ngResource','ngAnimate','drop-ng','mdSteppers','slick' ]);
 
 app.directive('shakeThat', ['$animate', function($animate) {
 
@@ -57,7 +57,7 @@ app .directive('pwCheck', [function () {
 app.config(function ($routeProvider,$mdThemingProvider) {
 
     var primMap = $mdThemingProvider.extendPalette('pink', {
-        '500': '#E6007E',
+        '500': '#DE8BA5',
         'contrastDefaultColor': 'light'
     });
 
@@ -66,7 +66,7 @@ app.config(function ($routeProvider,$mdThemingProvider) {
 
 
     var accentMap = $mdThemingProvider.extendPalette('green', {
-        '500': '#004d40',
+        '500': '#FCBEBF',
         'contrastDefaultColor': 'light'
     });
 
@@ -75,7 +75,7 @@ app.config(function ($routeProvider,$mdThemingProvider) {
 
 
     var warningMap = $mdThemingProvider.extendPalette('green', {
-        '500': '#004d40',
+        '500': '#FCBEBF',
         'contrastDefaultColor': 'light'
     });
 
@@ -291,10 +291,6 @@ app.controller('appCtrl',appCtrl);
             clickOutsideToClose:true
         });
     }
-
-    $scope.maike="ich bin die beste Entwicklerin der Welt";
-
-
     // Öffnen der Webseite wie z.B. Mein Profile, Neue Bestellung und Meine Bestellungen
 
     $scope.openSite = function (sitetitle) {

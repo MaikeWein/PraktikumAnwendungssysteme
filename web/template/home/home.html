@@ -1,32 +1,125 @@
++<link href="css/home.css" rel="stylesheet">
+
 <div id="menu-home">
-    <md-card class="homelay">
-    <div >
-<h1 style="opacity: 1 !important" >We bake it, you take it! </h1>
+    <div style="background-color: black">
+        <div class="parallax" style="opacity:0.7">
+        </div>
+
     </div>
-    </md-card>
-</div>
-</div>
-<div id="menu-service">
-</div>
-<div id="menu-price">
-    Hallo wieso geht das nicht
+    <div class="hometext">
+        Liebe geht durch den Magen und das Süße kommt von uns..
+    </div>
+    <div style="text-align: center">
+    <img src="./assets/herz.jpg" class="picture">
+    <img src="./assets/cupcake-2.png" class="picturecup">
+    <img src="./assets/herzspiegel.png" class="picture">
+    </div>
 
 </div>
+<div id="menu-price" ng-init="getZutaten()">
+
+    <div style="background-color: black">
+        <div class="parallax" style="opacity:0.7">
+        </div>
+    </div>
+    <div class="hometext2">
+        Unsere Preisübersicht..
+    </div>
+    <div class="price">
+        <table class="fuckshit">
+            <tr>
+                <th>Gebäckart</th>
+                <th>Preis</th>
+            </tr>
+            <tr ng-repeat="geb in $root.gebaeck">
+                <td>{{geb.name}}</td>
+                <td>{{geb.preis}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="price">
+<table class="fuckshit">
+            <tr>
+                <th>Füllung des Gebäcks</th>
+                <th>Preis</th>
+            </tr>
+            <tr ng-repeat="geb in $root.fuellung">
+                <td>{{geb.name}}</td>
+                <td>{{geb.preis}} </td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="price">
+
+        <table class="fuckshit">
+            <tr>
+                <th>Topping auf dem Gebäck</th>
+                <th>Preis</th>
+            </tr>
+            <tr ng-repeat="geb in $root.toppings">
+                <td>{{geb.name}}</td>
+                <td>{{geb.preis}}</td>
+            </tr>
+        </table>
+
+    </div>
+    </div>
 <div id="menu-footer">
-    <md-toolbar>
-        <span class="cookie"> Das sind wir: </span>
-    </md-toolbar>
-    <md-card class="kontakt" >
-        <img class="kontakt-img"  src="assets/Silvia.jpg"/>
-        <h4>Silvia Yildiz </h4>
-    </md-card>
-    <md-card class="kontakt">
-            <img class="kontakt-img" src="assets/mai.png"/>
-            <h4>Maike Weingärtner </h4>
-    </md-card>
-    <md-toolbar>
-        <span class="cookie"> Und hier findest du uns: </span>
-    </md-toolbar>
+    <div>
+        <div class="parallaxkontakt" style="opacity:0.7">
+        </div>
+        <md-toolbar>
+            <span class="cookie"> Über uns.. </span>
+        </md-toolbar>
+        <div class="wir">"Die HOMEBAKERY ist ein seit über 20 Jahren in Mannheim geführtes Familienunternehmen, welches seine Kunden mit süßen Backwaren verwöhnt.
+        Unsere Kunden sind für uns ein Teil unserer Famile, und ihre Zufriedenheit hat für uns höchste Priorität.</br>
+            Deshalb bieten wir seit neustem einen Online Shop an um Sie, auch zu Hause mit unseren heißgeliebten Backwaren zu beglücken.
+            Für Ihre individuellen Wünsche können Sie uns auch selbstverständlich telefonisch kontaktieren." </br>
+            Mit süßen Grüßen</br>
+            </br>
+            Maike & Silvia
+        </div>
+
+        <md-toolbar style=" margin-top: 40px;">
+            <span class="cookie"> Hier finden Sie uns.. </span>
+        </md-toolbar>
+
+        <table>
+       <tr>
+           <td class="kko">
+           </br> <h4> Geschäftsführung </h4>
+               Silvia Yildiz & Maike Weingärtner </br>
+               Neckarauer Str. 217 </br>
+               68199 Mannheim </br>
+               0621/101010 </br>
+               geschaeftsfuehrung@homebakery.de <br>
+
+
+           </td>
+           <td class="kko">
+                    <table >
+                        <tr><th colspan="2"><h4>Lieferzeiten</h4></th></tr>
+                        <tr><th>Montag-Freitag:</th> <td>10:00-16:00Uhr</td></tr>
+                        <tr><th>Samstag:</th> <td>09:00-12:00Uhr</td></tr>
+                        <tr><th>Sonntag:</th> <td>geschlossen</td></tr>
+
+                    </table>
+           </td>
+       </tr>
+            <tr>
+                <td>
+                    <iframe
+                            width="400"
+                            height="400"
+                            frameborder="0" style="border:0; margin-top: 30px;"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBtrSGPavwyIh483mMBo-ydNhxlnnmSk6s
+    &q=Neckarauerstrasse+217.,+68199+Mannheim,+Germany" allowfullscreen>
+                    </iframe>
+                </td>
+            </tr>
+        </table>
 
 </div>
 

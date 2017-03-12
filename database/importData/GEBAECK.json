@@ -2,45 +2,45 @@
     "model": "GEBAECK",
     "data": {
       "name":"Cupcake",
-      "description":"\"Wählen Sie unser Speziel Cupcake für Geniesser\"",
+      "description":"\"Nach amerikanischer Art\"",
       "picurl":"/assets/gebaeck/muffin.jpg",
-      "preis":1
+      "preis":0.8
     }
   },
   {
     "model": "GEBAECK",
     "data": {
       "name":"Berliner",
-      "description":"Toller Berliner",
+      "description":"\"Bei uns ist jeden Tag Karneval\"",
       "picurl":"/assets/gebaeck/berliner.png",
-      "preis":1
+      "preis":0.8
     }
   },
   {
     "model": "GEBAECK",
     "data": {
       "name": "Croissant",
-      "description": "Tolles Croissant",
+      "description": "\"Kurzer Genuss nach Paris\"",
       "picurl": "/assets/gebaeck/croissant.jpg",
-      "preis": 1
+      "preis": 0.7
     }
   },
   {
     "model": "GEBAECK",
     "data": {
       "name":"Donut",
-      "description":"Toller Donut",
+      "description":"\"Der Ring zu dem jede Frau JA sagt\"",
       "picurl":"/assets/gebaeck/donut.png",
-      "preis":1
+      "preis":0.7
     }
   },
   {
     "model": "GEBAECK",
     "data": {
       "name": "Windbeutel",
-      "description": "Toller Windbeutel",
+      "description": "\"Locker und fluffig\"",
       "picurl": "/assets/gebaeck/wind.png",
-      "preis": 1
+      "preis": 0.5
     }
   }
 ]

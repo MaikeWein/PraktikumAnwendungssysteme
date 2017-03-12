@@ -1,19 +1,17 @@
 [{
     "model": "GESCHMACK",
     "data": {
-      "name":"Schokolade",
-      "description":"Toller Muffin",
-      "picurl":"/assets/geschmack/Schokolade.png",
-      "preis":1
+      "name":"Kakao",
+      "description":"\"Aus selbstgemahlenen Kakaobohnen\"",
+      "picurl":"/assets/geschmack/Schokolade.png"
     }
   },
   {
     "model": "GESCHMACK",
     "data": {
       "name":"Vanille",
-      "description":"Toller Muffin",
-      "picurl":"/assets/geschmack/Vanille.png",
-      "preis":1
+      "description":"\"Aus Vanilleschoten, ohne künstliche Aromastoffe\"",
+      "picurl":"/assets/geschmack/Vanille.png"
     }
   },
 
@@ -21,27 +19,24 @@
     "model": "GESCHMACK",
     "data": {
       "name":"Zitrone",
-      "description":"Toller Muffin",
-      "picurl":"/assets/geschmack/Zitrone.png",
-      "preis":1
+      "description":"\"Diesmal süß statt sauer\"",
+      "picurl":"/assets/geschmack/Zitrone.png"
     }
   },
   {
     "model": "GESCHMACK",
     "data": {
       "name":"Stracciatella",
-      "description":"Toller Muffin",
-      "picurl":"/assets/geschmack/Stracciatella.png",
-      "preis":1
+      "description":"\"Mit Schokostreuseln aus Schweizer Schokolade\"",
+      "picurl":"/assets/geschmack/Stracciatella.png"
     }
   },
   {
     "model": "GESCHMACK",
     "data": {
       "name":"Ohne zusätzlichen Geschmack",
-      "description":"Toller Muffin",
-      "picurl":"/assets/geschmack/Teig.png",
-      "preis":1
+      "description":"\"Für Klassik-Liebhaber\"",
+      "picurl":"/assets/geschmack/Teig.png"
     }
   }
 ]

@@ -2,9 +2,9 @@
     "model": "TOPPINGS",
     "data": {
       "name":"Oreo",
-      "description":"Toller Muffin",
+      "description":"Das Orginal",
       "picurl":"/assets/toppings/oreokeks.jpg",
-      "preis":1
+      "preis":0.3
     }
   },
   {
@@ -13,34 +13,64 @@
       "name":"Streusel",
       "description":"Bunte Zuckerstreusel",
       "picurl":"/assets/toppings/Streusel.png",
-      "preis":1
+      "preis":0
     }
   },
   {
     "model": "TOPPINGS",
     "data": {
       "name":"Puderzucker",
-      "description":"Klassisch mit Puderzucker",
+      "description":"Klassisch",
       "picurl":"/assets/toppings/puderzucker.jpg",
-      "preis":1
+      "preis":0
     }
   },
   {
     "model": "TOPPINGS",
     "data": {
-      "name":"Schokososse",
-      "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
-      "preis":1
+      "name":"Schokosoße",
+      "description":"Aus Vollmichschokolade",
+      "picurl":"/assets/toppings/Schokoladensosse.jpg",
+      "preis":0.3
     }
   },
   {
     "model": "TOPPINGS",
     "data": {
       "name":"Kronkant",
-      "description":"Toller Muffin",
-      "picurl":"/assets/gebaeck/muffin.jpg",
-      "preis":1
+      "description":"Gehackte Nüsse mit karamelisiertem Zucker",
+      "picurl":"/assets/toppings/Krokant.jpg",
+      "preis":0.2
+    }
+  },
+  {
+    "model": "TOPPINGS",
+    "data": {
+      "name":"Smarties",
+      "description":"Bunte Schokolinsen, beliebt bei klein und groß",
+      "picurl":"/assets/toppings/Smarties.jpg",
+      "preis":0.3
     }
   }
+,
+  {
+    "model": "TOPPINGS",
+    "data": {
+      "name":"Kokosflocken",
+      "description":"Geraspelte Kokosnuss für einen karibischen Geschmack",
+      "picurl":"/assets/toppings/Kokosflocken.jpg",
+      "preis":0
+    }
+  }
+,
+  {
+    "model": "TOPPINGS",
+    "data": {
+      "name":"Buttercreme",
+      "description":"Gönnung",
+      "picurl":"/assets/toppings/Buttercreme.png",
+      "preis":0.2
+    }
+  }
+
 ]
